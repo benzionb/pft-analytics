@@ -104,6 +104,7 @@ interface TxData {
   Account?: string;
   Destination?: string;
   Amount?: string | number | { currency: string; value: string };
+  DeliverMax?: string | number | { currency: string; value: string };  // XRPL uses DeliverMax for payments
   hash?: string;
   date?: number;
   Memos?: Array<{
@@ -236,8 +237,8 @@ async function analyzeRewardTransactions(
     if (tx.TransactionType !== 'Payment') continue;
     if (tx.Account !== REWARD_ADDRESS) continue;
 
-    // Parse PFT amount
-    const pft = parsePftAmount(tx.Amount);
+    // Parse PFT amount (DeliverMax is used in newer XRPL, fallback to Amount)
+    const pft = parsePftAmount(tx.DeliverMax) ?? parsePftAmount(tx.Amount);
     if (pft === null || pft <= 0) continue;
 
     const recipient = tx.Destination || '';
