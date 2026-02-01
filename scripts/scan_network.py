@@ -59,6 +59,29 @@ async def rpc_call(ws, payload: dict) -> dict:
     return json.loads(await ws.recv())
 
 
+async def fetch_account_balance(ws, address: str) -> float:
+    """Fetch current PFT balance for an address."""
+    payload = {
+        "command": "account_info",
+        "account": address,
+        "ledger_index": "validated"
+    }
+    resp = await rpc_call(ws, payload)
+    result = resp.get("result", {})
+
+    # Check for account not found
+    if "error" in result:
+        return 0.0
+
+    account_data = result.get("account_data", {})
+    balance_drops = account_data.get("Balance", "0")
+
+    try:
+        return int(balance_drops) / 1_000_000
+    except (ValueError, TypeError):
+        return 0.0
+
+
 async def fetch_account_tx(ws, account: str, limit: int = 400, marker=None) -> dict:
     """Fetch transaction history for an account."""
     payload = {
@@ -92,7 +115,7 @@ async def fetch_all_account_tx(ws, account: str, max_txs: int = 5000) -> list:
     return all_txs
 
 
-def analyze_reward_transactions(txs: list) -> dict:
+async def analyze_reward_transactions(ws, txs: list) -> dict:
     """Analyze outgoing PFT rewards from the reward address."""
     participants = set()
     rewards_by_recipient = defaultdict(float)
@@ -140,10 +163,25 @@ def analyze_reward_transactions(txs: list) -> dict:
             "date": day,
         })
 
-    # Build leaderboard
+    # Fetch balances for all recipients
+    print(f"  Fetching balances for {len(rewards_by_recipient)} addresses...", file=sys.stderr)
+    balances = {}
+    for i, addr in enumerate(rewards_by_recipient.keys()):
+        balances[addr] = await fetch_account_balance(ws, addr)
+        if (i + 1) % 10 == 0:
+            print(f"    Fetched {i + 1}/{len(rewards_by_recipient)} balances...", file=sys.stderr)
+
+    # Build leaderboard with balances
     leaderboard = sorted(
-        [{"address": addr, "total_pft": round(amt, 2)} for addr, amt in rewards_by_recipient.items()],
-        key=lambda x: x["total_pft"],
+        [
+            {
+                "address": addr,
+                "total_pft": round(amt, 2),
+                "balance": round(balances.get(addr, 0.0), 2)
+            }
+            for addr, amt in rewards_by_recipient.items()
+        ],
+        key=lambda x: (x["balance"], x["total_pft"]),
         reverse=True
     )
 
@@ -258,7 +296,7 @@ async def main():
 
         # Analyze
         print("\nAnalyzing...", file=sys.stderr)
-        rewards = analyze_reward_transactions(reward_txs)
+        rewards = await analyze_reward_transactions(ws, reward_txs)
         submissions = analyze_memo_transactions(memo_txs)
 
         # Combine

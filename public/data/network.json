@@ -1,94 +1,117 @@
 {
   "metadata": {
-    "generated_at": "2026-02-01T02:34:36.273801+00:00",
+    "generated_at": "2026-02-01T04:13:10.783395+00:00",
     "reward_address": "rGBKxoTcavpfEso7ASRELZAMcCMqKa8oFk",
     "memo_address": "rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7",
-    "reward_txs_fetched": 171,
-    "memo_txs_fetched": 556
+    "reward_txs_fetched": 177,
+    "memo_txs_fetched": 569
   },
   "network_totals": {
-    "total_pft_distributed": 486286.25,
-    "unique_earners": 18,
-    "total_rewards_paid": 114,
-    "total_submissions": 360,
-    "unique_submitters": 30
+    "total_pft_distributed": 508586.25,
+    "unique_earners": 19,
+    "total_rewards_paid": 117,
+    "total_submissions": 370,
+    "unique_submitters": 31
   },
   "rewards": {
-    "total_pft_distributed": 486286.25,
-    "unique_recipients": 18,
-    "total_reward_transactions": 114,
+    "total_pft_distributed": 508586.25,
+    "unique_recipients": 19,
+    "total_reward_transactions": 117,
     "leaderboard": [
       {
-        "address": "rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx",
-        "total_pft": 113375.0
-      },
-      {
         "address": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
-        "total_pft": 111673.75
+        "total_pft": 111673.75,
+        "balance": 151784.75
       },
       {
-        "address": "r4LPPHygwNnM5d9xtFDnR9hsBqyQQKauGh",
-        "total_pft": 65350.0
+        "address": "rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx",
+        "total_pft": 113375.0,
+        "balance": 108352.0
       },
       {
         "address": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
-        "total_pft": 64962.5
+        "total_pft": 81262.5,
+        "balance": 76413.53
+      },
+      {
+        "address": "r4LPPHygwNnM5d9xtFDnR9hsBqyQQKauGh",
+        "total_pft": 65350.0,
+        "balance": 65311.0
       },
       {
         "address": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
-        "total_pft": 42750.0
-      },
-      {
-        "address": "rafVsZMGoPbMfaJi3Ty8fTWVA2cfq8an5C",
-        "total_pft": 14125.0
-      },
-      {
-        "address": "rHTicnqEJ7YnPLCHmBtQCjWzXZZ48zAaLV",
-        "total_pft": 14000.0
-      },
-      {
-        "address": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
-        "total_pft": 12000.0
-      },
-      {
-        "address": "rHTgM9rZBZkuqF5H8DQxFWTR7biXmMvPLm",
-        "total_pft": 6800.0
-      },
-      {
-        "address": "rMghCB7NxDV3PfgFTLkzF1YT2KovKEFRWN",
-        "total_pft": 6750.0
-      },
-      {
-        "address": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
-        "total_pft": 6250.0
+        "total_pft": 42750.0,
+        "balance": 54386.0
       },
       {
         "address": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
-        "total_pft": 6000.0
+        "total_pft": 6000.0,
+        "balance": 28761.0
       },
       {
-        "address": "rHC35vMWnhC778Zie16XiLzpeUKeQrxQ8b",
-        "total_pft": 6000.0
+        "address": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
+        "total_pft": 12000.0,
+        "balance": 19788.77
       },
       {
-        "address": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
-        "total_pft": 4500.0
+        "address": "rHTgM9rZBZkuqF5H8DQxFWTR7biXmMvPLm",
+        "total_pft": 6800.0,
+        "balance": 14311.0
       },
       {
-        "address": "rDxG2EXUmQThZJtZcq4cp18obb8gU7oxuR",
-        "total_pft": 4000.0
+        "address": "rafVsZMGoPbMfaJi3Ty8fTWVA2cfq8an5C",
+        "total_pft": 14125.0,
+        "balance": 14131.0
+      },
+      {
+        "address": "rHTicnqEJ7YnPLCHmBtQCjWzXZZ48zAaLV",
+        "total_pft": 14000.0,
+        "balance": 14011.2
       },
       {
         "address": "rsAGhYorBXGmbDGXR23iwnENSwSuoMfkQZ",
-        "total_pft": 4000.0
+        "total_pft": 4000.0,
+        "balance": 7343.4
       },
       {
-        "address": "rD7Q7n9LHhWkqziBW8VAg8CHNYZ8JzRJCQ",
-        "total_pft": 3750.0
+        "address": "rMghCB7NxDV3PfgFTLkzF1YT2KovKEFRWN",
+        "total_pft": 6750.0,
+        "balance": 6761.0
+      },
+      {
+        "address": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
+        "total_pft": 6250.0,
+        "balance": 6261.0
+      },
+      {
+        "address": "rHC35vMWnhC778Zie16XiLzpeUKeQrxQ8b",
+        "total_pft": 6000.0,
+        "balance": 6106.0
+      },
+      {
+        "address": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "total_pft": 6000.0,
+        "balance": 6011.0
+      },
+      {
+        "address": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "total_pft": 4500.0,
+        "balance": 4511.0
       },
       {
         "address": "rKt4peDozpRW9zdYGiTZC54DSNU3Af6pQE",
-        "total_pft": 0.0
+        "total_pft": 0.0,
+        "balance": 4250.0
+      },
+      {
+        "address": "rDxG2EXUmQThZJtZcq4cp18obb8gU7oxuR",
+        "total_pft": 4000.0,
+        "balance": 4011.0
+      },
+      {
+        "address": "rD7Q7n9LHhWkqziBW8VAg8CHNYZ8JzRJCQ",
+        "total_pft": 3750.0,
+        "balance": 3761.0
       }
     ],
     "daily_activity": [
@@ -146,9 +169,35 @@
         "date": "2026-01-31",
         "pft": 91760.0,
         "tx_count": 14
+      },
+      {
+        "date": "2026-02-01",
+        "pft": 22300.0,
+        "tx_count": 3
       }
     ],
     "recent_rewards": [
+      {
+        "hash": "2CE923902DF93ADC632AAF9099872B87282FBBDE38208E3F713ED77AC7E0D26D",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 6500.0,
+        "timestamp": 1769918502,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "6F71B8A04132D11A732851513C30E7C6FBA72D30B5FB7E382CC3A4D6A17A21B3",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 9800.0,
+        "timestamp": 1769916160,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "8D81BD4A482907B3E92D3C89E15F75988A78DD1C570CC78ADB7C201417FBDF56",
+        "recipient": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "pft": 6000.0,
+        "timestamp": 1769915292,
+        "date": "2026-02-01"
+      },
       {
         "hash": "C0A9D3901D5CC820DFC597BA7BA22D1FF2F212B214DF285AEDBE2E9678B032B3",
         "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
@@ -477,45 +526,24 @@
         "pft": 10000.0,
         "timestamp": 1769738241,
         "date": "2026-01-30"
-      },
-      {
-        "hash": "CA42D2E36783ABE17B2846F1483416D9830DD2A979636FE84AE47F4DECE00F94",
-        "recipient": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
-        "pft": 3750.0,
-        "timestamp": 1769732032,
-        "date": "2026-01-30"
-      },
-      {
-        "hash": "A489A8623F337A00702BECFDB2C883B90AA90AF6B984443974CB3C944D31C92E",
-        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
-        "pft": 3000.0,
-        "timestamp": 1769719970,
-        "date": "2026-01-29"
-      },
-      {
-        "hash": "8C6A23671FD6F5606B5DD63B530AF79C6FF8F9CF70065D4A9864AF4140866DFA",
-        "recipient": "rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx",
-        "pft": 9375.0,
-        "timestamp": 1769710240,
-        "date": "2026-01-29"
       }
     ]
   },
   "submissions": {
-    "total_submissions": 360,
-    "unique_submitters": 30,
+    "total_submissions": 370,
+    "unique_submitters": 31,
     "top_submitters": [
       {
         "address": "rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx",
         "submissions": 67
       },
       {
-        "address": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "address": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
         "submissions": 53
       },
       {
-        "address": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
-        "submissions": 49
+        "address": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "submissions": 53
       },
       {
         "address": "r4LPPHygwNnM5d9xtFDnR9hsBqyQQKauGh",
@@ -550,6 +578,10 @@
         "submissions": 9
       },
       {
+        "address": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "submissions": 8
+      },
+      {
         "address": "r4DQiSf6DaKk5ZDe46BmMFKC4ooZCBtpkn",
         "submissions": 7
       },
@@ -564,10 +596,6 @@
       {
         "address": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
         "submissions": 5
-      },
-      {
-        "address": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
-        "submissions": 4
       },
       {
         "address": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
@@ -594,15 +622,15 @@
         "submissions": 3
       },
       {
+        "address": "rpc9FcxtaNVdWonAXv3rABecNLx7kcA3sY",
+        "submissions": 2
+      },
+      {
         "address": "rpyTMcAKiCxqY7VXenD5ercGGzGWNV9xpg",
         "submissions": 2
       },
       {
         "address": "rDxG2EXUmQThZJtZcq4cp18obb8gU7oxuR",
-        "submissions": 2
-      },
-      {
-        "address": "rB8fgsDdBtVd4MoaqHg3MkWKNN6EVvejCH",
         "submissions": 2
       }
     ],
@@ -665,10 +693,70 @@
       },
       {
         "date": "2026-02-01",
-        "submissions": 2
+        "submissions": 12
       }
     ],
     "recent_submissions": [
+      {
+        "hash": "E100CCE675648292E7707BDA57E40BFD0D56816E7B5877B73B2273AE1A2D1E33",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769918183,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "F0B7F29C67AC2BE487153DCFC8BB13559CD13DD16A73A472EB8122A70E001383",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769918121,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "247D5D57F02D3560C0061EE0103448E3A9EDB72F0BFC435273ED7DCAF90B93F9",
+        "sender": "rpc9FcxtaNVdWonAXv3rABecNLx7kcA3sY",
+        "timestamp": 1769917392,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "24092B5BA2AB3F285C20AC567CF4A4A98AD92B8CE885BAC9284E8ADCB590A24E",
+        "sender": "rpc9FcxtaNVdWonAXv3rABecNLx7kcA3sY",
+        "timestamp": 1769917170,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "75BF666E0E30EA1D6E79986B5107D5530CFD78C9E219840F6E6173B8752E9AFC",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769915851,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "433E7B54879C1FA638599EB688771168EA005ED42FB1EB86B752055C103898D9",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769915720,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "DE7C47B378F71B3AA9EA6FD6C1C3B915CD63BA02C3715AD9BD1529676FE3B383",
+        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "timestamp": 1769915122,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "78175AD3FEF20A530C887DF576BF4430F8E0BC351AEC1697409517F464FBC091",
+        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "timestamp": 1769914972,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "FFAAD15A1EFC215023A540EF6434613CE13EB673117F1CA6FC863F29BAEF3174",
+        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "timestamp": 1769914341,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "5EF9D2D5AA10DF517351C711A6646516465D665F1F5FBC764F84C71A59DF98D5",
+        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "timestamp": 1769914120,
+        "date": "2026-02-01"
+      },
       {
         "hash": "04B77C6FF6B21421CF961EFABDB0C61790CC60D7F0E3735BCF23DF066E2FAC17",
         "sender": "rpyTMcAKiCxqY7VXenD5ercGGzGWNV9xpg",
@@ -908,66 +996,6 @@
         "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
         "timestamp": 1769835342,
         "date": "2026-01-31"
-      },
-      {
-        "hash": "640A71837378AD2E0C5684C127CC1793776706B789CC9478723CF2C4552E9FD1",
-        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
-        "timestamp": 1769834860,
-        "date": "2026-01-31"
-      },
-      {
-        "hash": "D777A6A75A76E5CEE0AF0992C3E9B0BE9B988CBC159AA21E73D3D60F9BC4ADF0",
-        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
-        "timestamp": 1769834260,
-        "date": "2026-01-31"
-      },
-      {
-        "hash": "DC704D9A264451A3DA10BBD47F46DD7282A2443A4198ACE72BE050B32420312C",
-        "sender": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
-        "timestamp": 1769822363,
-        "date": "2026-01-31"
-      },
-      {
-        "hash": "A8D64A1F53C7698248A779BCDA8E917DC3386A9802A1830444DB4A26BA7EB2CE",
-        "sender": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
-        "timestamp": 1769821822,
-        "date": "2026-01-31"
-      },
-      {
-        "hash": "3EC32C033AF38ECB9D8E4EE7BC7FC4BE51A138C6604B3422667590C7E1B05102",
-        "sender": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
-        "timestamp": 1769819030,
-        "date": "2026-01-31"
-      },
-      {
-        "hash": "5B087F69AE85BE0AEA15C0838F5EFFEB17F893DDCCE6CD74FC3CF1B9B7EE5389",
-        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
-        "timestamp": 1769817891,
-        "date": "2026-01-31"
-      },
-      {
-        "hash": "DCEA767C2C51DD3BE0E1289A2889CC924CBD7734B3FEF2D38859F1BEF8C35704",
-        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
-        "timestamp": 1769817802,
-        "date": "2026-01-31"
-      },
-      {
-        "hash": "8C122BD6A10A2B45593057B44FD1EBB3FCC6F93E7B509837C18B354948B696A9",
-        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
-        "timestamp": 1769816761,
-        "date": "2026-01-30"
-      },
-      {
-        "hash": "50BD8AB19F1E531CF73BDEA61252C65D6C70478219084D16135D01359DC2C1B6",
-        "sender": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
-        "timestamp": 1769815960,
-        "date": "2026-01-30"
-      },
-      {
-        "hash": "17E8250F5376C895C58DEB8E59E3C48FBBB9C5D1C67907C09E4AEA7FE7BDD8EB",
-        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
-        "timestamp": 1769815510,
-        "date": "2026-01-30"
       }
     ]
   }

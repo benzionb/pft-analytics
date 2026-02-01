@@ -14,7 +14,7 @@ export interface NetworkData {
     unique_submitters: number;
   };
   rewards: {
-    leaderboard: Array<{ address: string; total_pft: number }>;
+    leaderboard: Array<{ address: string; total_pft: number; balance: number }>;
     daily_activity: Array<{ date: string; pft: number; tx_count: number }>;
   };
   submissions: {

@@ -68,26 +68,37 @@ function renderDashboard(data: NetworkData) {
     </div>
   `;
 
-  // Leaderboard
-  const leaderboardHtml = data.rewards.leaderboard.slice(0, 10).map((entry, i) => `
-    <div class="leaderboard-row ${i < 3 ? 'top-' + (i + 1) : ''}">
-      <div class="rank">#${i + 1}</div>
-      <div class="address-cell">
+  // Leaderboard - table-based layout with Balance + Earned
+  const leaderboardRows = data.rewards.leaderboard.slice(0, 10).map((entry, i) => `
+    <tr class="${i < 3 ? 'top-' + (i + 1) : ''}" data-address="${entry.address}">
+      <td class="rank-cell">#${i + 1}</td>
+      <td class="address-cell">
         <span class="address" data-full-address="${entry.address}">
           ${formatAddress(entry.address)}
           <span class="address-tooltip">${entry.address}</span>
         </span>
         <a href="https://testnet.xrpl.org/accounts/${entry.address}" target="_blank" rel="noopener noreferrer" class="explorer-link" title="View on XRPL Explorer">↗</a>
-      </div>
-      <div class="pft">${formatPFT(entry.total_pft)}</div>
-    </div>
+      </td>
+      <td class="balance-cell">${formatPFT(entry.balance)}</td>
+      <td class="earned-cell">${formatPFT(entry.total_pft)}</td>
+    </tr>
   `).join('');
 
   document.getElementById('leaderboard')!.innerHTML = `
-    <h2>Top Earners</h2>
-    <div class="leaderboard">
-      ${leaderboardHtml}
-    </div>
+    <h2>Network Leaderboard</h2>
+    <table class="leaderboard-table">
+      <thead>
+        <tr>
+          <th class="rank-header">Rank</th>
+          <th class="address-header">Address</th>
+          <th class="balance-header">Balance</th>
+          <th class="earned-header">Earned</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${leaderboardRows}
+      </tbody>
+    </table>
   `;
 
   // Daily activity chart with continuous timeline
@@ -343,9 +354,9 @@ function setupAddressSearch() {
   searchInput.addEventListener('input', () => {
     updateClearButton();
     const query = searchInput.value.toLowerCase().trim();
-    const leaderboardRows = document.querySelectorAll('.leaderboard-row');
+    const leaderboardRows = document.querySelectorAll('.leaderboard-table tbody tr');
     const submitterRows = document.querySelectorAll('.submitter-row');
-    const allRows = document.querySelectorAll('.leaderboard-row, .submitter-row');
+    const allRows = document.querySelectorAll('.leaderboard-table tbody tr, .submitter-row');
 
     if (!query) {
       // Clear search state - show all rows normally
@@ -360,6 +371,9 @@ function setupAddressSearch() {
     let matchCount = 0;
     let earnerRank: number | null = null;
     let submitterRank: number | null = null;
+    let matchedAddress: string | null = null;
+    let matchedBalance: string | null = null;
+    let matchedEarned: string | null = null;
 
     // Find rank in leaderboard (earners)
     leaderboardRows.forEach((row, index) => {
@@ -372,7 +386,15 @@ function setupAddressSearch() {
         row.classList.add('search-match');
         row.classList.remove('search-dimmed');
         matchCount++;
-        if (earnerRank === null) earnerRank = index + 1; // 1-indexed
+        if (earnerRank === null) {
+          earnerRank = index + 1; // 1-indexed
+          matchedAddress = addressEl.getAttribute('data-full-address');
+          // Extract balance and earned from table cells
+          const balanceCell = row.querySelector('.balance-cell');
+          const earnedCell = row.querySelector('.earned-cell');
+          matchedBalance = balanceCell?.textContent || '0';
+          matchedEarned = earnedCell?.textContent || '0';
+        }
       } else {
         row.classList.remove('search-match');
         row.classList.add('search-dimmed');
@@ -397,23 +419,52 @@ function setupAddressSearch() {
       }
     });
 
-    // Show/hide no results message and rank info
+    // Show/hide no results message and wallet summary
     if (matchCount === 0) {
       noResultsEl.style.display = 'block';
       resultsInfoEl.style.display = 'none';
     } else {
       noResultsEl.style.display = 'none';
 
-      // Build rank info string
-      const parts: string[] = [];
-      if (earnerRank !== null) {
-        parts.push(`Rank <span class="rank-number">#${earnerRank}</span> of ${leaderboardRows.length} earners`);
+      // Build wallet summary panel when we have a match
+      if (matchedAddress && earnerRank !== null) {
+        resultsInfoEl.innerHTML = `
+          <div class="wallet-summary">
+            <div class="wallet-summary-row wallet-address">
+              <span class="wallet-label">Address</span>
+              <span class="wallet-value address-mono">${matchedAddress}</span>
+            </div>
+            <div class="wallet-summary-grid">
+              <div class="wallet-summary-item">
+                <span class="wallet-label">Balance</span>
+                <span class="wallet-value accent">${matchedBalance}</span>
+              </div>
+              <div class="wallet-summary-item">
+                <span class="wallet-label">Total Earned</span>
+                <span class="wallet-value accent">${matchedEarned}</span>
+              </div>
+              <div class="wallet-summary-item">
+                <span class="wallet-label">Earner Rank</span>
+                <span class="wallet-value">#${earnerRank} <span class="wallet-subtext">of ${leaderboardRows.length}</span></span>
+              </div>
+              <div class="wallet-summary-item">
+                <span class="wallet-label">Submitter Rank</span>
+                <span class="wallet-value">${submitterRank !== null ? `#${submitterRank} <span class="wallet-subtext">of ${submitterRows.length}</span>` : '<span class="wallet-subtext">Not ranked</span>'}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        // Fallback for non-earner matches (submitters only)
+        const parts: string[] = [];
+        if (earnerRank !== null) {
+          parts.push(`Earner #${earnerRank}`);
+        }
+        if (submitterRank !== null) {
+          parts.push(`Submitter #${submitterRank}`);
+        }
+        resultsInfoEl.innerHTML = `Found: ${parts.join(' &bull; ')}`;
       }
-      if (submitterRank !== null) {
-        parts.push(`Rank <span class="rank-number">#${submitterRank}</span> of ${submitterRows.length} submitters`);
-      }
-
-      resultsInfoEl.innerHTML = `Found: ${parts.join(' &bull; ')}`;
       resultsInfoEl.style.display = 'block';
     }
   });
