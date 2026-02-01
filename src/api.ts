@@ -1,0 +1,46 @@
+// Network analytics data from XRPL chain scan
+
+export interface NetworkData {
+  metadata: {
+    generated_at: string;
+    reward_address: string;
+    memo_address: string;
+  };
+  network_totals: {
+    total_pft_distributed: number;
+    unique_earners: number;
+    total_rewards_paid: number;
+    total_submissions: number;
+    unique_submitters: number;
+  };
+  rewards: {
+    leaderboard: Array<{ address: string; total_pft: number }>;
+    daily_activity: Array<{ date: string; pft: number; tx_count: number }>;
+  };
+  submissions: {
+    daily_submissions: Array<{ date: string; submissions: number }>;
+    top_submitters: Array<{ address: string; submissions: number }>;
+  };
+}
+
+export async function fetchNetworkData(): Promise<NetworkData> {
+  const response = await fetch('/data/network.json');
+  if (!response.ok) {
+    throw new Error(`Failed to fetch network data: ${response.statusText}`);
+  }
+  return response.json();
+}
+
+// Format address for display (truncate middle)
+export function formatAddress(addr: string): string {
+  if (addr.length <= 12) return addr;
+  return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+}
+
+// Format PFT with commas
+export function formatPFT(amount: number): string {
+  return amount.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  });
+}

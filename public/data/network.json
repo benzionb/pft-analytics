@@ -1,0 +1,974 @@
+{
+  "metadata": {
+    "generated_at": "2026-02-01T02:34:36.273801+00:00",
+    "reward_address": "rGBKxoTcavpfEso7ASRELZAMcCMqKa8oFk",
+    "memo_address": "rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7",
+    "reward_txs_fetched": 171,
+    "memo_txs_fetched": 556
+  },
+  "network_totals": {
+    "total_pft_distributed": 486286.25,
+    "unique_earners": 18,
+    "total_rewards_paid": 114,
+    "total_submissions": 360,
+    "unique_submitters": 30
+  },
+  "rewards": {
+    "total_pft_distributed": 486286.25,
+    "unique_recipients": 18,
+    "total_reward_transactions": 114,
+    "leaderboard": [
+      {
+        "address": "rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx",
+        "total_pft": 113375.0
+      },
+      {
+        "address": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "total_pft": 111673.75
+      },
+      {
+        "address": "r4LPPHygwNnM5d9xtFDnR9hsBqyQQKauGh",
+        "total_pft": 65350.0
+      },
+      {
+        "address": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "total_pft": 64962.5
+      },
+      {
+        "address": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "total_pft": 42750.0
+      },
+      {
+        "address": "rafVsZMGoPbMfaJi3Ty8fTWVA2cfq8an5C",
+        "total_pft": 14125.0
+      },
+      {
+        "address": "rHTicnqEJ7YnPLCHmBtQCjWzXZZ48zAaLV",
+        "total_pft": 14000.0
+      },
+      {
+        "address": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
+        "total_pft": 12000.0
+      },
+      {
+        "address": "rHTgM9rZBZkuqF5H8DQxFWTR7biXmMvPLm",
+        "total_pft": 6800.0
+      },
+      {
+        "address": "rMghCB7NxDV3PfgFTLkzF1YT2KovKEFRWN",
+        "total_pft": 6750.0
+      },
+      {
+        "address": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
+        "total_pft": 6250.0
+      },
+      {
+        "address": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "total_pft": 6000.0
+      },
+      {
+        "address": "rHC35vMWnhC778Zie16XiLzpeUKeQrxQ8b",
+        "total_pft": 6000.0
+      },
+      {
+        "address": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "total_pft": 4500.0
+      },
+      {
+        "address": "rDxG2EXUmQThZJtZcq4cp18obb8gU7oxuR",
+        "total_pft": 4000.0
+      },
+      {
+        "address": "rsAGhYorBXGmbDGXR23iwnENSwSuoMfkQZ",
+        "total_pft": 4000.0
+      },
+      {
+        "address": "rD7Q7n9LHhWkqziBW8VAg8CHNYZ8JzRJCQ",
+        "total_pft": 3750.0
+      },
+      {
+        "address": "rKt4peDozpRW9zdYGiTZC54DSNU3Af6pQE",
+        "total_pft": 0.0
+      }
+    ],
+    "daily_activity": [
+      {
+        "date": "2026-01-21",
+        "pft": 44450.0,
+        "tx_count": 9
+      },
+      {
+        "date": "2026-01-22",
+        "pft": 34275.0,
+        "tx_count": 22
+      },
+      {
+        "date": "2026-01-23",
+        "pft": 19750.0,
+        "tx_count": 13
+      },
+      {
+        "date": "2026-01-24",
+        "pft": 46000.0,
+        "tx_count": 8
+      },
+      {
+        "date": "2026-01-25",
+        "pft": 10500.0,
+        "tx_count": 3
+      },
+      {
+        "date": "2026-01-26",
+        "pft": 4500.0,
+        "tx_count": 1
+      },
+      {
+        "date": "2026-01-27",
+        "pft": 6750.0,
+        "tx_count": 2
+      },
+      {
+        "date": "2026-01-28",
+        "pft": 20000.0,
+        "tx_count": 4
+      },
+      {
+        "date": "2026-01-29",
+        "pft": 22375.0,
+        "tx_count": 4
+      },
+      {
+        "date": "2026-01-30",
+        "pft": 185926.25,
+        "tx_count": 34
+      },
+      {
+        "date": "2026-01-31",
+        "pft": 91760.0,
+        "tx_count": 14
+      }
+    ],
+    "recent_rewards": [
+      {
+        "hash": "C0A9D3901D5CC820DFC597BA7BA22D1FF2F212B214DF285AEDBE2E9678B032B3",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 9500.0,
+        "timestamp": 1769899591,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "50BCAC45138B22E98B40062EAF03541D674C8EAAA4612D667F743CE1CB97EE87",
+        "recipient": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "pft": 9000.0,
+        "timestamp": 1769894142,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "CEF58B54E62BA7AD69DC98858E4284A6B4FF3B9A9E7F0356E65AB356CD7EA0DC",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 9500.0,
+        "timestamp": 1769888242,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "F091A3A639C7AE5D7E8877170C02294FE824FDC381D9E1FFD98B04B404EED47F",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 9500.0,
+        "timestamp": 1769886272,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "73E4FF2B53C38CF0748CBB2C9C892583E6C1C3BBBD97A1620880CC9FDC616679",
+        "recipient": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "pft": 4500.0,
+        "timestamp": 1769875980,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "956D7F0BE3591F1FBBF236C6CC62469B0849DC8102F03C3DF6E77AC893598797",
+        "recipient": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "pft": 6000.0,
+        "timestamp": 1769873232,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "FE1FA835F9827BC992C91E8475C2FD8E7A0023501B64D15F7D29A3B06E8C77E6",
+        "recipient": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "pft": 6000.0,
+        "timestamp": 1769863363,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "9B767480FB4D3E22FAAC5C45BDA0CA540DE07661471F9E2E473DEAC0568B6D66",
+        "recipient": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "pft": 9500.0,
+        "timestamp": 1769858611,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "FFF65B0CCA7124F52C614F026758AA62B24BD49CF8ED0A2DF10517B6C3B16C54",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 3000.0,
+        "timestamp": 1769841090,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "FA4A74230EA4DB445303086F148565C7256261A71D3B83EF2C46EA811062A15B",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 1560.0,
+        "timestamp": 1769840433,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "32CD0D4B1183B08B9A52066158E1CC24A87A1785D35AA7424E8EBFDEBAA4548F",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 7500.0,
+        "timestamp": 1769839592,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "6F30A1D7BDE34FBA23A03947CE1D2AD16A9475C1B6D5903D49EDDD9BD283C07D",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 2400.0,
+        "timestamp": 1769838630,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "A789C3D5F0B80BDFCEFCFFB84C3DE4AFD593F25A5D1CB98C270C728AB392C217",
+        "recipient": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
+        "pft": 6000.0,
+        "timestamp": 1769822640,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "25DB15A8F2256C1066DB4991966439D0EE6BD916994EBA6957F345243431EB45",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 7800.0,
+        "timestamp": 1769819330,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "A83442C3648DCF6626E916011D318D44353AFA8CC7F35A0615C431CC833E7719",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 8500.0,
+        "timestamp": 1769817082,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "BF42FF12AF2D532F2AAEF258504FF73CB7D93C459563F09DB959EC863C0F5FF8",
+        "recipient": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
+        "pft": 6250.0,
+        "timestamp": 1769813831,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "CCD130EA3F831FB6F6E348C84968E301C6A616E9142D55DF0E8BDD0D0DFFA510",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 9750.0,
+        "timestamp": 1769812982,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "4F36A25E35CF3EDB15F106AA55854F9EB879064ED4FA160E1614067C36837ABB",
+        "recipient": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "pft": 6000.0,
+        "timestamp": 1769811612,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "D7F5FC36D35BF177E1D60EB2A60D52555B2648C623A485815D4CDF40332A24EA",
+        "recipient": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
+        "pft": 6000.0,
+        "timestamp": 1769811071,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "E7E20086D8127719AD3A34F28E3BDDCE9D3D5681F203643B4D0E49293165E250",
+        "recipient": "rDxG2EXUmQThZJtZcq4cp18obb8gU7oxuR",
+        "pft": 4000.0,
+        "timestamp": 1769807663,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "2CD1D387A0534C541D042C2DE736CBC796FDEBD8C5EE49F5F61306CF1E479CEB",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 222.375,
+        "timestamp": 1769807603,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "1968FECAFB41C27E247AE3C9D710A798E989C891F0EDB2B27BA3F1C3386A2A4F",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 351.375,
+        "timestamp": 1769807300,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "78DF38EC978E012C137E0800DEABA11247BD45EA4A60718FEBCA932D2BD679F5",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 8350.0,
+        "timestamp": 1769806590,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "031CB3B02EDBBE79B0148CE1F1A41C9AB6AF1A953251F71A50E13DA39B86ADF7",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 8200.0,
+        "timestamp": 1769806271,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "709EF9DBE1C7266C3E8CAE62B3BB2872840D19B61D07FFB40E9295E6891F672C",
+        "recipient": "rHTgM9rZBZkuqF5H8DQxFWTR7biXmMvPLm",
+        "pft": 5000.0,
+        "timestamp": 1769805100,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "4EADE4E9A3990A2DE1DDC30620A6EB3EB324896E598BA7ED6C614E0B174B80A9",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 10000.0,
+        "timestamp": 1769804780,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "413E689C61444C2DC9AC11E31EDB1021F5FC53824545972DAA2A93F427D5ACBF",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 7800.0,
+        "timestamp": 1769803612,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "E41476B5C4015C4700BFC2079583C3227CA5B22A4FEC98802C3BE3032AAE7018",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 5500.0,
+        "timestamp": 1769801472,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "2004D46C1A5BF61E62AD2427950F9C5B59ED3C42A18352E66C9F90B13E144FA5",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 4600.0,
+        "timestamp": 1769799412,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "0B4C3267DDED32BE5A41154EF46E29A1672A8E662AFAF4EC09B6314FFC00FF4B",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 3750.0,
+        "timestamp": 1769798700,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "3E00D933CF72A5FD65E2AD727EBF077A0BC6C5AC9CEE25163E21A7BF70CDB0B0",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 3750.0,
+        "timestamp": 1769797843,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "BF0CD351CD927E2DA8E4FACB3A2F276721E955EFFEEBC636507D654167D06648",
+        "recipient": "rD7Q7n9LHhWkqziBW8VAg8CHNYZ8JzRJCQ",
+        "pft": 3750.0,
+        "timestamp": 1769795063,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "95B56AB75DCC43EB0E99182ADF2B7283C403B29949605A8643DFBE4B726489B2",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 600.0,
+        "timestamp": 1769788863,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "EF9861D03BED8A3293BACD8742013306456A6EE7A97CDDF1E5B27CF15BC5153A",
+        "recipient": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "pft": 4000.0,
+        "timestamp": 1769769930,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "8973D4ACAC3A4A67F8C06BA8E511F2FCEAE229F6913D216D142623B4DED64BC1",
+        "recipient": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "pft": 2250.0,
+        "timestamp": 1769766751,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "B3E6193566D3F2AA2E55C71859AF4D98BCB9136682CE4E7050AFFE1BD504FC56",
+        "recipient": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "pft": 6250.0,
+        "timestamp": 1769765943,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "12139586BD12AA91C9C55FF3821F35EC82A63FA4DAC558463289D1209AEDBA46",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 2.5,
+        "timestamp": 1769761151,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "E27A3FEFCF8411FBA592F1A769062E3CE148B934C17ACF1C1FE1B23494099791",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 800.0,
+        "timestamp": 1769759310,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "2817AB5A9CC1A5AA5282D1300279EEE213A6CABCFE9354B2814E9B9ABC0B89F6",
+        "recipient": "rsAGhYorBXGmbDGXR23iwnENSwSuoMfkQZ",
+        "pft": 4000.0,
+        "timestamp": 1769756150,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "F027AC482C2058FD073C06EC32BE267AB762C109331B870FBC3D86780A97153D",
+        "recipient": "rHTicnqEJ7YnPLCHmBtQCjWzXZZ48zAaLV",
+        "pft": 8000.0,
+        "timestamp": 1769753173,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "46E3222193AF534836829A8DD1107A1075C66F9B559559B4EF23BC6B9FEB9C28",
+        "recipient": "rHTicnqEJ7YnPLCHmBtQCjWzXZZ48zAaLV",
+        "pft": 6000.0,
+        "timestamp": 1769752620,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "E761B63611E647A063901772FF9EB334191FBF81A83EEBD3DAA760573EB7220D",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 7500.0,
+        "timestamp": 1769748971,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "C9F2025185DB4D78719316E0B00513C7B72FD919967E5EE9204E3DC1FD7CB0BF",
+        "recipient": "rHTgM9rZBZkuqF5H8DQxFWTR7biXmMvPLm",
+        "pft": 1800.0,
+        "timestamp": 1769748161,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "754476F3692B5E2A238EEA998AB7A73C4DC418C540AAC6DE4A8E720DBE2CB211",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 9200.0,
+        "timestamp": 1769745142,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "E268848447D9E8C2AC4393799E10822929CA78D6A94C3C7A05078A567E3112D5",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 10000.0,
+        "timestamp": 1769742052,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "A2EE3ADAE911836F934DA1A012FB43C26626EBB988947EBCBE12AC1E110EEB85",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 10000.0,
+        "timestamp": 1769739351,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "F57C4096C04FDF52C945E8BEFA51E5ED571DCD9651166A920027036290E6D317",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 10000.0,
+        "timestamp": 1769738241,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "CA42D2E36783ABE17B2846F1483416D9830DD2A979636FE84AE47F4DECE00F94",
+        "recipient": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "pft": 3750.0,
+        "timestamp": 1769732032,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "A489A8623F337A00702BECFDB2C883B90AA90AF6B984443974CB3C944D31C92E",
+        "recipient": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "pft": 3000.0,
+        "timestamp": 1769719970,
+        "date": "2026-01-29"
+      },
+      {
+        "hash": "8C6A23671FD6F5606B5DD63B530AF79C6FF8F9CF70065D4A9864AF4140866DFA",
+        "recipient": "rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx",
+        "pft": 9375.0,
+        "timestamp": 1769710240,
+        "date": "2026-01-29"
+      }
+    ]
+  },
+  "submissions": {
+    "total_submissions": 360,
+    "unique_submitters": 30,
+    "top_submitters": [
+      {
+        "address": "rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx",
+        "submissions": 67
+      },
+      {
+        "address": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "submissions": 53
+      },
+      {
+        "address": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "submissions": 49
+      },
+      {
+        "address": "r4LPPHygwNnM5d9xtFDnR9hsBqyQQKauGh",
+        "submissions": 34
+      },
+      {
+        "address": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "submissions": 30
+      },
+      {
+        "address": "rLdQP33f66jmUo77AG9jCqgNcRC4URxKhp",
+        "submissions": 15
+      },
+      {
+        "address": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "submissions": 10
+      },
+      {
+        "address": "rsAGhYorBXGmbDGXR23iwnENSwSuoMfkQZ",
+        "submissions": 10
+      },
+      {
+        "address": "rMghCB7NxDV3PfgFTLkzF1YT2KovKEFRWN",
+        "submissions": 10
+      },
+      {
+        "address": "rafVsZMGoPbMfaJi3Ty8fTWVA2cfq8an5C",
+        "submissions": 10
+      },
+      {
+        "address": "rHTgM9rZBZkuqF5H8DQxFWTR7biXmMvPLm",
+        "submissions": 9
+      },
+      {
+        "address": "r4DQiSf6DaKk5ZDe46BmMFKC4ooZCBtpkn",
+        "submissions": 7
+      },
+      {
+        "address": "rPfbHPUixxMkebvrCKwv3KeJLNMktHDT67",
+        "submissions": 6
+      },
+      {
+        "address": "r1uESHeCB7ZooX1H6xrok754dama1gTWs",
+        "submissions": 6
+      },
+      {
+        "address": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "submissions": 5
+      },
+      {
+        "address": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "submissions": 4
+      },
+      {
+        "address": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
+        "submissions": 4
+      },
+      {
+        "address": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
+        "submissions": 4
+      },
+      {
+        "address": "rHTicnqEJ7YnPLCHmBtQCjWzXZZ48zAaLV",
+        "submissions": 4
+      },
+      {
+        "address": "r4PTQW6ZExstr2h9enpoStrreWJYGxL1ZZ",
+        "submissions": 4
+      },
+      {
+        "address": "rHC35vMWnhC778Zie16XiLzpeUKeQrxQ8b",
+        "submissions": 4
+      },
+      {
+        "address": "rD7Q7n9LHhWkqziBW8VAg8CHNYZ8JzRJCQ",
+        "submissions": 3
+      },
+      {
+        "address": "rpyTMcAKiCxqY7VXenD5ercGGzGWNV9xpg",
+        "submissions": 2
+      },
+      {
+        "address": "rDxG2EXUmQThZJtZcq4cp18obb8gU7oxuR",
+        "submissions": 2
+      },
+      {
+        "address": "rB8fgsDdBtVd4MoaqHg3MkWKNN6EVvejCH",
+        "submissions": 2
+      }
+    ],
+    "daily_submissions": [
+      {
+        "date": "2026-01-18",
+        "submissions": 12
+      },
+      {
+        "date": "2026-01-19",
+        "submissions": 17
+      },
+      {
+        "date": "2026-01-20",
+        "submissions": 7
+      },
+      {
+        "date": "2026-01-21",
+        "submissions": 30
+      },
+      {
+        "date": "2026-01-22",
+        "submissions": 21
+      },
+      {
+        "date": "2026-01-23",
+        "submissions": 16
+      },
+      {
+        "date": "2026-01-24",
+        "submissions": 22
+      },
+      {
+        "date": "2026-01-25",
+        "submissions": 10
+      },
+      {
+        "date": "2026-01-26",
+        "submissions": 2
+      },
+      {
+        "date": "2026-01-27",
+        "submissions": 5
+      },
+      {
+        "date": "2026-01-28",
+        "submissions": 11
+      },
+      {
+        "date": "2026-01-29",
+        "submissions": 21
+      },
+      {
+        "date": "2026-01-30",
+        "submissions": 139
+      },
+      {
+        "date": "2026-01-31",
+        "submissions": 45
+      },
+      {
+        "date": "2026-02-01",
+        "submissions": 2
+      }
+    ],
+    "recent_submissions": [
+      {
+        "hash": "04B77C6FF6B21421CF961EFABDB0C61790CC60D7F0E3735BCF23DF066E2FAC17",
+        "sender": "rpyTMcAKiCxqY7VXenD5ercGGzGWNV9xpg",
+        "timestamp": 1769907351,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "50B60A0883C14323DB611D37E26E0C4F6C7BC8C55487C4E94FC460B58DE1DC6E",
+        "sender": "rpyTMcAKiCxqY7VXenD5ercGGzGWNV9xpg",
+        "timestamp": 1769907041,
+        "date": "2026-02-01"
+      },
+      {
+        "hash": "CF81E4BA6FFE84B0CDF2921D39BB893E0267E3A93E5EE2CB25D5CA56DF520EFF",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769899300,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "1B33F9AED9AE968FECFD0F5DD4E972C81B01619D28995BABC08B9C7D576676B2",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769899032,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "057D0D9170BBD4323E3BE93F5BDF6DAEAF21772D521256AF110F6A96131267A8",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769893851,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "6714495251190502C79D259D82CCFDC111E243F466F2AF149B84ED966CE63FE9",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769893632,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "0B6115EDED90244C38E41025912A96B3130AF91A712959BF3383B5F59A67B745",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769887941,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "957ED29D10ABFEF8C3A021433D2AAD27775D1406B63555D608CC826C6F9FBF2E",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769887851,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "0EDC1A8E4927EEEECFB2CAD75129C4C281ECBCE5172C9A79F87C1D58D5873286",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769885981,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "D276723104EBB68E45211F62E5192ED4FB9573301D01AA81229C6E5D7BD6C7EB",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769885850,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "F78A35B8D5E276F3C543DD9E773B081D3C35AB316667DC6C08DC21BE3CD300B1",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769882771,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "FAB89ECC82226484DF884FADA9030BD80490FEAD16F8867497D36A213033AE52",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769882291,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "B524506F35335CDA0C88D877476256990131052994F3235AEFFF9606FCA9824C",
+        "sender": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "timestamp": 1769877471,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "0CCFB8FF41EC11DFB52F51B6A1C14A32A62E3191707640AD7D3DA4E605939BFD",
+        "sender": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "timestamp": 1769877220,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "3471B5623CEAC49824D39C34AC3C170392AFAA9DAABD41F9AD2FD03AB0A59DD9",
+        "sender": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "timestamp": 1769875603,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "C4167FDB625DDFDFA8930B1EF442B599C202102818A9331010458B7BE7669ABD",
+        "sender": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "timestamp": 1769875110,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "EB4F925BDAF01EDAEE6E554ED3D642F410272AEF1EC7A5B7E97AD13EFCED160A",
+        "sender": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "timestamp": 1769874250,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "010BC36920DFBD6171173E24ECBF72DDBB5BC82670C53BD88A7EFE7711A3419A",
+        "sender": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "timestamp": 1769874113,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "A09A928349601F0ABE8BCF21E90DFF6467DD829B6D71D7F448D760C22B183042",
+        "sender": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "timestamp": 1769873091,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "E6F46CA849F5D64F6B11E8BC697E540C7B78C57D52634E8471BE619FEA46A350",
+        "sender": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "timestamp": 1769872942,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "8A46BBDDD614712E74CBAE5FE1018C51D6CFB8C3006A81CF782EE355F3DB311C",
+        "sender": "rQhV9rE7cs5zgFZohjVjjbwqcMkwpLb9rE",
+        "timestamp": 1769872850,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "FC732D60EFE34481817D3ABBF99EE9C66780E594192D5387E64CEA203C4B30FB",
+        "sender": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "timestamp": 1769872621,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "080CC534420FD6BBAC994CC5B107F82C865CCA6D52FE48E13DE1FA7C1ECC18EF",
+        "sender": "r4WS8fhYgpvnV5j4qkb7yvbt96Bvx9gMZH",
+        "timestamp": 1769871922,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "C180E4209A049D18551ABCA25F160B72123EDD76C18A4DAC68ADDD03CDC6C863",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769868373,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "23EDA08B61935A609D3E2C16AE47A57B091553A8FDB4DCC853855467D002C5AF",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769863071,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "8189B9AE67978EEC5D78A0C957627BAFDE5EA3C2286EB6CF33FCB001D298B7F3",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769862830,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "C048FFE8FFCADA3DAB20244C85028CA15D50CA0FC1A0703D12AB5F9012EC1A58",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769860570,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "A16486A9BB498C18E24D49DA202170E682C3A771CE48E7E0D9E481876AAC0B11",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769858320,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "830D1A00419455E292714955D59ECA78A75B117FAFB65FF3CE10E3E1F8808E8F",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769858040,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "9AD109CB002E3867FCCE8E33EF97BE67016AE8561BF6F3F2FE627D3D011F0FB1",
+        "sender": "rnmLkDT2SBeaFA5z2ogdUCbJ2GMzn2sLLu",
+        "timestamp": 1769856451,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "A40D01E5CBAAFF5266B2020C32B6CB537EC4C5973F47D1902E924EF3F4B5E4B1",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769840781,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "590D7D363B1062890F9C13F92FCBF1B478C9048AFE821C17BD90B637A1731922",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769840740,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "5691B88CCA06D2B56BB3648DC45B26E61B17E60CB7FEDC61DFD94055A8696CDA",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769840103,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "12B294ACD814DD17867839B1E60A545F02432EE68A87596DD6B3D6A3F74C56CC",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769840060,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "643637EDF5BF37F01212461224665C8D10377F495B62B62CD0B34A5E11218DC3",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769839271,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "7B169110E888522D43CE9FD4734EC9DCAA75CB1BBF4D8F9A6EAD61D6C3934A26",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769839190,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "53E2107A913D17D5B1119008FCAFDFAA1447D84B52B8948C7B47109FC87A8243",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769838321,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "95AFB53F24B333A5484861208A8EE31BB8031CB2BDDF615D17447375E88C043D",
+        "sender": "rh7eykJ99XnGTm2iNBzeD5A9MLqnb7kXCp",
+        "timestamp": 1769838212,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "243B7178A7020FEDB910A89D94AE508B09301011CB18B994DC70A8BF7FB0EE2F",
+        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "timestamp": 1769835970,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "B02BFB297235F4DD0BEA5D8F8079F4CD196F46B4278CC54AA706290284CFE046",
+        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "timestamp": 1769835342,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "640A71837378AD2E0C5684C127CC1793776706B789CC9478723CF2C4552E9FD1",
+        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "timestamp": 1769834860,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "D777A6A75A76E5CEE0AF0992C3E9B0BE9B988CBC159AA21E73D3D60F9BC4ADF0",
+        "sender": "rfo5PXejjp6xA4H8cNhodhkfz9tHLMCVNx",
+        "timestamp": 1769834260,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "DC704D9A264451A3DA10BBD47F46DD7282A2443A4198ACE72BE050B32420312C",
+        "sender": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
+        "timestamp": 1769822363,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "A8D64A1F53C7698248A779BCDA8E917DC3386A9802A1830444DB4A26BA7EB2CE",
+        "sender": "rDAokUXBoYRRqwB3z97t7EsS4ASdXopfo1",
+        "timestamp": 1769821822,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "3EC32C033AF38ECB9D8E4EE7BC7FC4BE51A138C6604B3422667590C7E1B05102",
+        "sender": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
+        "timestamp": 1769819030,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "5B087F69AE85BE0AEA15C0838F5EFFEB17F893DDCCE6CD74FC3CF1B9B7EE5389",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769817891,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "DCEA767C2C51DD3BE0E1289A2889CC924CBD7734B3FEF2D38859F1BEF8C35704",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769817802,
+        "date": "2026-01-31"
+      },
+      {
+        "hash": "8C122BD6A10A2B45593057B44FD1EBB3FCC6F93E7B509837C18B354948B696A9",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769816761,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "50BD8AB19F1E531CF73BDEA61252C65D6C70478219084D16135D01359DC2C1B6",
+        "sender": "rGGodJFqgreLgXKVGspkZ68dqBH8RBGCJr",
+        "timestamp": 1769815960,
+        "date": "2026-01-30"
+      },
+      {
+        "hash": "17E8250F5376C895C58DEB8E59E3C48FBBB9C5D1C67907C09E4AEA7FE7BDD8EB",
+        "sender": "rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr",
+        "timestamp": 1769815510,
+        "date": "2026-01-30"
+      }
+    ]
+  }
+}
