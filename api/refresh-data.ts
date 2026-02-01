@@ -427,11 +427,12 @@ export default async function handler(request: VercelRequest, response: VercelRe
       submissions,
     };
 
-    // Write to Vercel Blob
+    // Write to Vercel Blob (overwrite existing file each time)
     const blob = await put('network.json', JSON.stringify(analytics, null, 2), {
       access: 'public',
       contentType: 'application/json',
       addRandomSuffix: false,
+      allowOverwrite: true,
     });
 
     const elapsedMs = Date.now() - startTime;
