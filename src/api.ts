@@ -24,7 +24,9 @@ export interface NetworkData {
 }
 
 export async function fetchNetworkData(): Promise<NetworkData> {
-  const response = await fetch('/data/network.json');
+  // Use Vercel Blob URL if set, otherwise fallback to local path for development
+  const dataUrl = import.meta.env.VITE_DATA_URL || '/data/network.json';
+  const response = await fetch(dataUrl);
   if (!response.ok) {
     throw new Error(`Failed to fetch network data: ${response.statusText}`);
   }
