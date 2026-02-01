@@ -38,9 +38,13 @@ export interface NetworkData {
   };
 }
 
+const DEFAULT_BLOB_URL = 'https://dclwht8rlliznsdz.public.blob.vercel-storage.com/network.json';
+
 export async function fetchNetworkData(): Promise<NetworkData> {
-  // Use Vercel Blob URL if set, otherwise fallback to local path for development
-  const dataUrl = import.meta.env.VITE_DATA_URL || '/data/network.json';
+  // Use Vercel Blob URL if set, otherwise fallback to Blob (prod) or local dev data.
+  const dataUrl =
+    import.meta.env.VITE_DATA_URL ||
+    (import.meta.env.DEV ? '/data/network.json' : DEFAULT_BLOB_URL);
   const response = await fetch(dataUrl);
   if (!response.ok) {
     throw new Error(`Failed to fetch network data: ${response.statusText}`);

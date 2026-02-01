@@ -68,37 +68,51 @@ function renderDashboard(data: NetworkData) {
     </div>
   `;
 
-  // Task lifecycle metrics
-  const lifecycle = data.task_lifecycle;
-  const completionRate = lifecycle.completion_rate;
-  const avgTimeToReward = lifecycle.avg_time_to_reward_hours;
+  // Task lifecycle metrics (with null safety)
+  const lifecycle = data.task_lifecycle || {
+    total_tasks_inferred: 0,
+    tasks_completed: 0,
+    tasks_pending: 0,
+    tasks_expired: 0,
+    completion_rate: 0,
+    avg_time_to_reward_hours: 0,
+    daily_lifecycle: []
+  };
+  const completionRate = lifecycle.completion_rate ?? 0;
+  const avgTimeToReward = lifecycle.avg_time_to_reward_hours ?? 0;
 
+  // Render lifecycle as horizontal flow visualization
   document.getElementById('task-lifecycle')!.innerHTML = `
-    <h2>Task Lifecycle</h2>
-    <div class="lifecycle-grid">
-      <div class="lifecycle-card">
-        <div class="value">${lifecycle.total_tasks_inferred}</div>
-        <div class="label">Tasks Submitted</div>
+    <h2>Task Lifecycle Flow</h2>
+    <div class="lifecycle-flow">
+      <div class="lifecycle-stage submitted">
+        <div class="stage-value">${lifecycle.total_tasks_inferred}</div>
+        <div class="stage-label">Submitted</div>
       </div>
-      <div class="lifecycle-card">
-        <div class="value">${lifecycle.tasks_completed}</div>
-        <div class="label">Tasks Completed</div>
+      <div class="lifecycle-arrow">→</div>
+      <div class="lifecycle-outcomes">
+        <div class="lifecycle-stage completed">
+          <div class="stage-value">${lifecycle.tasks_completed}</div>
+          <div class="stage-label">Completed</div>
+        </div>
+        <div class="lifecycle-stage pending">
+          <div class="stage-value">${lifecycle.tasks_pending}</div>
+          <div class="stage-label">Pending</div>
+        </div>
+        <div class="lifecycle-stage expired">
+          <div class="stage-value">${lifecycle.tasks_expired}</div>
+          <div class="stage-label">Expired</div>
+        </div>
       </div>
-      <div class="lifecycle-card">
-        <div class="value">${lifecycle.tasks_pending}</div>
-        <div class="label">Pending</div>
+    </div>
+    <div class="lifecycle-summary">
+      <div class="summary-stat">
+        <span class="summary-value">${completionRate.toFixed(1)}%</span>
+        <span class="summary-label">Completion Rate</span>
       </div>
-      <div class="lifecycle-card">
-        <div class="value">${lifecycle.tasks_expired}</div>
-        <div class="label">Expired</div>
-      </div>
-      <div class="lifecycle-card wide">
-        <div class="value">${completionRate.toFixed(1)}%</div>
-        <div class="label">Completion Rate</div>
-      </div>
-      <div class="lifecycle-card wide">
-        <div class="value">${avgTimeToReward.toFixed(1)}h</div>
-        <div class="label">Avg Time to Reward</div>
+      <div class="summary-stat">
+        <span class="summary-value">${avgTimeToReward.toFixed(1)}h</span>
+        <span class="summary-label">Avg Time to Reward</span>
       </div>
     </div>
   `;
@@ -302,10 +316,6 @@ async function init() {
         <h2>Derived Metrics</h2>
         <div class="loading">Calculating...</div>
       </section>
-      <section id="task-lifecycle" class="section full-width">
-        <h2>Task Lifecycle</h2>
-        <div class="loading">Calculating...</div>
-      </section>
       <section id="leaderboard" class="section">
         <h2>Top Earners</h2>
         <div class="loading">Loading...</div>
@@ -317,6 +327,10 @@ async function init() {
       <section id="submitters" class="section">
         <h2>Most Active Submitters</h2>
         <div class="loading">Loading...</div>
+      </section>
+      <section id="task-lifecycle" class="section full-width">
+        <h2>Task Lifecycle Flow</h2>
+        <div class="loading">Calculating...</div>
       </section>
     </main>
     <footer class="footer">

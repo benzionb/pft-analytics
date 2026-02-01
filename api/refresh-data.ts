@@ -21,6 +21,7 @@ const RIPPLE_EPOCH = 946684800;
 const REWARD_ADDRESSES = [
   'rGBKxoTcavpfEso7ASRELZAMcCMqKa8oFk', // Primary reward wallet
   'rKt4peDozpRW9zdYGiTZC54DSNU3Af6pQE', // Secondary reward wallet
+  'rJNwqDPKSkbqDPNoNxbW6C3KCS84ZaQc96', // Additional reward wallet
 ];
 const MEMO_ADDRESS = 'rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7'; // Receives task memos
 const DEBUG_WALLET = 'rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr';
@@ -286,6 +287,14 @@ async function analyzeRewardTransactions(
     // Only outgoing payments from reward addresses
     if (tx.TransactionType !== 'Payment') continue;
     if (!tx.Account || !REWARD_ADDRESSES.includes(tx.Account)) continue;
+
+    const candidateRecipient = tx.Destination || '';
+    if (candidateRecipient === DEBUG_WALLET) {
+      const meta = txWrapper.meta as unknown as { delivered_amount?: unknown; DeliveredAmount?: unknown } | undefined;
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/65fd5333-ce3c-47a5-9a12-4a91675ab968',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/refresh-data.ts:306',message:'debug wallet payment raw fields',data:{hash:tx.hash,amount:tx.Amount,deliverMax:tx.DeliverMax,delivered_amount:meta?.delivered_amount,DeliveredAmount:meta?.DeliveredAmount},timestamp:Date.now(),sessionId:'debug-session',runId:'pre-fix',hypothesisId:'H3'})}).catch(()=>{});
+      // #endregion
+    }
 
     // Parse PFT amount (DeliverMax is used in newer XRPL, fallback to Amount)
     const pft = parsePftAmount(tx.DeliverMax) ?? parsePftAmount(tx.Amount);
@@ -621,6 +630,30 @@ export default async function handler(request: VercelRequest, response: VercelRe
     // Fetch memo transactions
     const memoTxs = await fetchAllAccountTx(client, MEMO_ADDRESS, 5000);
 
+    if (process.env.DEBUG_WALLET_ANALYSIS === '1') {
+      const debugTxs = await fetchAllAccountTx(client, DEBUG_WALLET, 5000);
+      let incomingTotal = 0;
+      const incomingBySender = new Map<string, number>();
+      for (const txWrapper of debugTxs) {
+        const tx = getTxData(txWrapper);
+        if (!tx) continue;
+        if (tx.TransactionType !== 'Payment') continue;
+        if (tx.Destination !== DEBUG_WALLET) continue;
+        const pft = parsePftAmount(tx.DeliverMax) ?? parsePftAmount(tx.Amount);
+        if (pft === null || pft <= 0) continue;
+        incomingTotal += pft;
+        const sender = tx.Account || 'unknown';
+        incomingBySender.set(sender, (incomingBySender.get(sender) || 0) + pft);
+      }
+      const topSenders = Array.from(incomingBySender.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5)
+        .map(([sender, total]) => ({ sender, total: round(total) }));
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/65fd5333-ce3c-47a5-9a12-4a91675ab968',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/refresh-data.ts:629',message:'debug wallet incoming summary',data:{address:DEBUG_WALLET,total_incoming:round(incomingTotal),unique_senders:incomingBySender.size,top_senders:topSenders,tx_count:debugTxs.length},timestamp:Date.now(),sessionId:'debug-session',runId:'pre-fix',hypothesisId:'H5'})}).catch(()=>{});
+      // #endregion
+    }
+
     // Analyze
     const rewardsInternal = await analyzeRewardTransactions(client, rewardTxs);
     const submissionsInternal = analyzeMemoTransactions(memoTxs);
@@ -675,6 +708,13 @@ export default async function handler(request: VercelRequest, response: VercelRe
         unique_earners: analytics.network_totals.unique_earners,
         total_submissions: analytics.network_totals.total_submissions,
       },
+      ...(process.env.DEBUG_WALLET_ANALYSIS === '1'
+        ? {
+            debug: {
+              leaderboard_top10: analytics.rewards.leaderboard.slice(0, 10),
+            },
+          }
+        : {}),
     });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';

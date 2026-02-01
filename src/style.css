@@ -938,3 +938,139 @@ body {
     transform: scale(1);
   }
 }
+
+/* Task Lifecycle Flow Visualization */
+.lifecycle-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.lifecycle-stage {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  min-width: 100px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.lifecycle-stage:hover {
+  transform: translateY(-2px);
+}
+
+.lifecycle-stage.submitted {
+  border-color: var(--accent);
+  background: rgba(0, 255, 136, 0.08);
+}
+
+.lifecycle-stage.completed {
+  border-color: var(--success);
+}
+
+.lifecycle-stage.completed .stage-value {
+  color: var(--success);
+}
+
+.lifecycle-stage.pending {
+  border-color: var(--warning);
+}
+
+.lifecycle-stage.pending .stage-value {
+  color: var(--warning);
+}
+
+.lifecycle-stage.expired {
+  border-color: var(--error);
+}
+
+.lifecycle-stage.expired .stage-value {
+  color: var(--error);
+}
+
+.stage-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.stage-label {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.lifecycle-arrow {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.lifecycle-outcomes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lifecycle-summary {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.summary-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.summary-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.summary-label {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+/* Responsive lifecycle flow */
+@media (max-width: 640px) {
+  .lifecycle-flow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .lifecycle-arrow {
+    transform: rotate(90deg);
+  }
+
+  .lifecycle-outcomes {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .lifecycle-stage {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .lifecycle-summary {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
