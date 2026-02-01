@@ -156,29 +156,18 @@ function round(value: number, decimals: number = 2): number {
   return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
 }
 
-// PFT token issuer address
-const PFT_ISSUER = 'rnQUEEg8yyjrwk9FhyXpKavHyCRJM9BDMW';
-
-// Fetch PFT token balance from trustlines
+// Fetch PFT balance (native currency on this XRPL fork)
 async function fetchAccountBalance(client: Client, address: string): Promise<number> {
   try {
     const response = await client.request({
-      command: 'account_lines',
+      command: 'account_info',
       account: address,
       ledger_index: 'validated',
     });
 
-    // Find the PFT trustline
-    const lines = response.result.lines || [];
-    const pftLine = lines.find(
-      (line: { currency: string; account: string }) =>
-        line.currency === 'PFT' && line.account === PFT_ISSUER
-    );
-
-    if (pftLine && typeof pftLine.balance === 'string') {
-      return parseFloat(pftLine.balance);
-    }
-    return 0.0;
+    // Balance is in drops (1 PFT = 1,000,000 drops)
+    const balanceDrops = response.result.account_data.Balance;
+    return parseInt(balanceDrops, 10) / 1_000_000;
   } catch {
     // Account not found or other error
     return 0.0;
