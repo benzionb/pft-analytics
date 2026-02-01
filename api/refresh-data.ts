@@ -156,17 +156,29 @@ function round(value: number, decimals: number = 2): number {
   return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
 }
 
-// Fetch account balance
+// PFT token issuer address
+const PFT_ISSUER = 'rnQUEEg8yyjrwk9FhyXpKavHyCRJM9BDMW';
+
+// Fetch PFT token balance from trustlines
 async function fetchAccountBalance(client: Client, address: string): Promise<number> {
   try {
     const response = await client.request({
-      command: 'account_info',
+      command: 'account_lines',
       account: address,
       ledger_index: 'validated',
     });
 
-    const balanceDrops = response.result.account_data.Balance;
-    return parseInt(balanceDrops, 10) / 1_000_000;
+    // Find the PFT trustline
+    const lines = response.result.lines || [];
+    const pftLine = lines.find(
+      (line: { currency: string; account: string }) =>
+        line.currency === 'PFT' && line.account === PFT_ISSUER
+    );
+
+    if (pftLine && typeof pftLine.balance === 'string') {
+      return parseFloat(pftLine.balance);
+    }
+    return 0.0;
   } catch {
     // Account not found or other error
     return 0.0;
