@@ -10,6 +10,24 @@
   </head>
   <body>
     <div id="app"></div>
+    <!-- Agentation Dev Tool (localhost only) -->
+    <div id="agentation-root"></div>
+    <script type="module">
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        const reactUrl = 'https://esm.sh/react@18.3.1';
+        const reactDomUrl = 'https://esm.sh/react-dom@18.3.1/client';
+        const agentationUrl = 'https://esm.sh/agentation@1.1.1?deps=react@18.3.1,react-dom@18.3.1';
+
+        import(/* @vite-ignore */ reactUrl).then(React => {
+          import(/* @vite-ignore */ reactDomUrl).then(({ createRoot }) => {
+            import(/* @vite-ignore */ agentationUrl).then(({ Agentation }) => {
+              const root = createRoot(document.getElementById('agentation-root'));
+              root.render(React.createElement(Agentation));
+            });
+          });
+        });
+      }
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

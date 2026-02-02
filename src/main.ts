@@ -11,14 +11,23 @@ let refreshIntervalId: number | null = null;
 // Render all dashboard data to the DOM
 function renderDashboard(data: NetworkData) {
   const totals = data.network_totals;
+  const avgPftPerReward = totals.total_rewards_paid > 0
+    ? totals.total_pft_distributed / totals.total_rewards_paid
+    : 0;
+  const successRate = totals.total_submissions > 0
+    ? (totals.total_rewards_paid / totals.total_submissions) * 100
+    : 0;
+  const avgPftPerEarner = totals.unique_earners > 0
+    ? totals.total_pft_distributed / totals.unique_earners
+    : 0;
 
-  // Network totals
+  // Network metrics (overview + derived)
   document.getElementById('network-totals')!.innerHTML = `
-    <h2>Network Overview</h2>
+    <h2>Network Metrics</h2>
     <div class="totals-grid">
       <div class="total-card highlight">
         <div class="value">${formatPFT(totals.total_pft_distributed)}</div>
-        <div class="label">Total PFT Distributed</div>
+        <div class="label">Total Distributed</div>
       </div>
       <div class="total-card">
         <div class="value">${totals.unique_earners}</div>
@@ -30,38 +39,21 @@ function renderDashboard(data: NetworkData) {
       </div>
       <div class="total-card">
         <div class="value">${totals.total_submissions}</div>
-        <div class="label">Task Submissions</div>
+        <div class="label">Submissions</div>
       </div>
       <div class="total-card">
         <div class="value">${totals.unique_submitters}</div>
         <div class="label">Active Submitters</div>
       </div>
-    </div>
-  `;
-
-  // Derived metrics
-  const avgPftPerReward = totals.total_rewards_paid > 0
-    ? totals.total_pft_distributed / totals.total_rewards_paid
-    : 0;
-  const successRate = totals.total_submissions > 0
-    ? (totals.total_rewards_paid / totals.total_submissions) * 100
-    : 0;
-  const avgPftPerEarner = totals.unique_earners > 0
-    ? totals.total_pft_distributed / totals.unique_earners
-    : 0;
-
-  document.getElementById('derived-metrics')!.innerHTML = `
-    <h2>Derived Metrics</h2>
-    <div class="derived-metrics">
-      <div class="derived-card">
+      <div class="total-card">
         <div class="value">${formatPFT(avgPftPerReward)}</div>
-        <div class="label">Avg Reward Size</div>
+        <div class="label">Avg Reward</div>
       </div>
-      <div class="derived-card">
+      <div class="total-card">
         <div class="value">${successRate.toFixed(1)}%</div>
-        <div class="label">Submissions Rewarded</div>
+        <div class="label">Success Rate</div>
       </div>
-      <div class="derived-card">
+      <div class="total-card">
         <div class="value">${formatPFT(avgPftPerEarner)}</div>
         <div class="label">Avg Earnings</div>
       </div>
@@ -134,13 +126,13 @@ function renderDashboard(data: NetworkData) {
   `).join('');
 
   document.getElementById('leaderboard')!.innerHTML = `
-    <h2>Network Leaderboard</h2>
+    <h2>Leaderboard</h2>
     <table class="leaderboard-table">
       <thead>
         <tr>
-          <th class="rank-header">Rank</th>
+          <th class="rank-header">#</th>
           <th class="address-header">Address</th>
-          <th class="balance-header">Balance</th>
+          <th class="balance-header">Bal</th>
           <th class="earned-header">Earned</th>
         </tr>
       </thead>
@@ -192,7 +184,7 @@ function renderDashboard(data: NetworkData) {
   }).join('');
 
   document.getElementById('daily-activity')!.innerHTML = `
-    <h2>Daily PFT Distribution (Last 14 Days)</h2>
+    <h2>Daily Distribution (14 Days)</h2>
     <div class="daily-table">
       ${dailyHtml}
     </div>
@@ -214,7 +206,7 @@ function renderDashboard(data: NetworkData) {
   `).join('');
 
   document.getElementById('submitters')!.innerHTML = `
-    <h2>Most Active Submitters</h2>
+    <h2>Top Submitters</h2>
     <div class="submitters-list">
       ${submittersHtml}
     </div>
@@ -233,19 +225,13 @@ function updateTimestamps(data: NetworkData) {
   const genTime = new Date(data.metadata.generated_at);
   document.getElementById('last-updated')!.textContent = genTime.toLocaleString();
 
-  // Format prominent header timestamp like "Jan 31, 2026 at 6:34 PM"
   const formattedDate = genTime.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric'
   });
-  const formattedTime = genTime.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true
-  });
   const ledgerIndex = data.metadata.ledger_index?.toLocaleString() || 'N/A';
-  document.getElementById('data-timestamp')!.textContent = `Data generated ${formattedDate} at ${formattedTime} • Ledger #${ledgerIndex}`;
+  document.getElementById('data-timestamp')!.textContent = `${formattedDate} • Ledger #${ledgerIndex}`;
 }
 
 // Show refresh indicator
@@ -292,7 +278,6 @@ async function init() {
   app.innerHTML = `
     <header class="header">
       <h1>PFT Analytics</h1>
-      <p class="subtitle">Post Fiat Network Metrics — On-Chain Data</p>
       <p class="data-timestamp" id="data-timestamp"></p>
       <div id="refresh-indicator" class="refresh-indicator">
         <span class="refresh-dot"></span>
@@ -309,12 +294,8 @@ async function init() {
     </div>
     <main class="dashboard">
       <section id="network-totals" class="section full-width">
-        <h2>Network Overview</h2>
+        <h2>Network Metrics</h2>
         <div class="loading">Loading on-chain data...</div>
-      </section>
-      <section id="derived-metrics" class="section full-width">
-        <h2>Derived Metrics</h2>
-        <div class="loading">Calculating...</div>
       </section>
       <section id="leaderboard" class="section">
         <h2>Top Earners</h2>
@@ -334,7 +315,7 @@ async function init() {
       </section>
     </main>
     <footer class="footer">
-      <p>Data sourced from XRPL chain • Last updated: <span id="last-updated">--</span> • Auto-refreshes every 60s</p>
+      <p>XRPL • Updated <span id="last-updated">--</span> • 60s refresh</p>
     </footer>
   `;
 
