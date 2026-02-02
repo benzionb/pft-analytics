@@ -205,6 +205,15 @@ body::after {
   border-bottom: 1px solid var(--border);
 }
 
+.section-note {
+  margin-top: -0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 /* Loading State */
 .loading {
   color: var(--text-muted);
@@ -358,7 +367,7 @@ body::after {
 /* Totals Grid */
 .totals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0.75rem;
 }
 
@@ -366,7 +375,7 @@ body::after {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 0;
-  padding: 1rem 0.75rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -376,7 +385,7 @@ body::after {
 }
 
 .total-card .value {
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.25rem;
@@ -385,7 +394,7 @@ body::after {
 }
 
 .total-card.highlight .value {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
 }
 
 .total-card .label {

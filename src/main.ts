@@ -75,11 +75,12 @@ function renderDashboard(data: NetworkData) {
 
   // Render lifecycle as horizontal flow visualization
   document.getElementById('task-lifecycle')!.innerHTML = `
-    <h2>Task Lifecycle Flow</h2>
+    <h2>Task Lifecycle (Inferred)</h2>
+    <p class="section-note">pf.ptr submissions: ${totals.total_submissions} • inferred tasks: ${lifecycle.total_tasks_inferred}</p>
     <div class="lifecycle-flow">
       <div class="lifecycle-stage submitted">
         <div class="stage-value">${lifecycle.total_tasks_inferred}</div>
-        <div class="stage-label">Submitted</div>
+        <div class="stage-label">Inferred</div>
       </div>
       <div class="lifecycle-arrow">→</div>
       <div class="lifecycle-outcomes">
