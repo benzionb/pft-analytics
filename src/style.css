@@ -74,6 +74,17 @@ body {
   text-shadow: 0 0 6px rgba(0, 255, 0, 0.2);
 }
 
+.header .data-timestamp a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-muted);
+}
+
+.header .data-timestamp a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 /* Address Search */
 .search-container {
   margin-bottom: 1rem;
@@ -396,6 +407,43 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-secondary);
+}
+
+/* Metric card accent colors */
+.total-card.accent-gold {
+  border-color: rgba(255, 215, 0, 0.4);
+  background: rgba(255, 215, 0, 0.06);
+}
+.total-card.accent-gold .value {
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.total-card.accent-cyan {
+  border-color: rgba(0, 255, 255, 0.4);
+  background: rgba(0, 255, 255, 0.06);
+}
+.total-card.accent-cyan .value {
+  color: #00ffff;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+.total-card.accent-green {
+  border-color: rgba(0, 255, 0, 0.4);
+  background: rgba(0, 255, 0, 0.06);
+}
+.total-card.accent-green .value {
+  color: #00ff00;
+  text-shadow: 0 0 12px rgba(0, 255, 0, 0.3);
+}
+
+.total-card.accent-purple {
+  border-color: rgba(180, 130, 255, 0.4);
+  background: rgba(180, 130, 255, 0.06);
+}
+.total-card.accent-purple .value {
+  color: #b482ff;
+  text-shadow: 0 0 12px rgba(180, 130, 255, 0.3);
 }
 
 /* Leaderboard Table */

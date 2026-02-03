@@ -21,41 +21,25 @@ function renderDashboard(data: NetworkData) {
     ? totals.total_pft_distributed / totals.unique_earners
     : 0;
 
-  // Network metrics (overview + derived)
+  // Network metrics (streamlined)
   document.getElementById('network-totals')!.innerHTML = `
     <h2>Network Metrics</h2>
     <div class="totals-grid">
-      <div class="total-card highlight">
+      <div class="total-card accent-gold">
         <div class="value">${formatPFT(totals.total_pft_distributed)}</div>
         <div class="label">Total Distributed</div>
       </div>
-      <div class="total-card">
+      <div class="total-card accent-cyan">
         <div class="value">${totals.unique_earners}</div>
         <div class="label">Unique Earners</div>
       </div>
-      <div class="total-card">
+      <div class="total-card accent-green">
         <div class="value">${totals.total_rewards_paid}</div>
         <div class="label">Rewards Paid</div>
       </div>
-      <div class="total-card">
-        <div class="value">${totals.total_submissions}</div>
-        <div class="label">Submissions</div>
-      </div>
-      <div class="total-card">
-        <div class="value">${totals.unique_submitters}</div>
-        <div class="label">Active Submitters</div>
-      </div>
-      <div class="total-card">
-        <div class="value">${formatPFT(avgPftPerReward)}</div>
-        <div class="label">Avg Reward</div>
-      </div>
-      <div class="total-card">
+      <div class="total-card accent-purple">
         <div class="value">${successRate.toFixed(1)}%</div>
         <div class="label">Success Rate</div>
-      </div>
-      <div class="total-card">
-        <div class="value">${formatPFT(avgPftPerEarner)}</div>
-        <div class="label">Avg Earnings</div>
       </div>
     </div>
   `;
@@ -70,45 +54,9 @@ function renderDashboard(data: NetworkData) {
     avg_time_to_reward_hours: 0,
     daily_lifecycle: []
   };
-  const completionRate = lifecycle.completion_rate ?? 0;
-  const avgTimeToReward = lifecycle.avg_time_to_reward_hours ?? 0;
-
-  // Render lifecycle as horizontal flow visualization
-  document.getElementById('task-lifecycle')!.innerHTML = `
-    <h2>Task Lifecycle (Inferred)</h2>
-    <p class="section-note">pf.ptr submissions: ${totals.total_submissions} • inferred tasks: ${lifecycle.total_tasks_inferred}</p>
-    <div class="lifecycle-flow">
-      <div class="lifecycle-stage submitted">
-        <div class="stage-value">${lifecycle.total_tasks_inferred}</div>
-        <div class="stage-label">Inferred</div>
-      </div>
-      <div class="lifecycle-arrow">→</div>
-      <div class="lifecycle-outcomes">
-        <div class="lifecycle-stage completed">
-          <div class="stage-value">${lifecycle.tasks_completed}</div>
-          <div class="stage-label">Completed</div>
-        </div>
-        <div class="lifecycle-stage pending">
-          <div class="stage-value">${lifecycle.tasks_pending}</div>
-          <div class="stage-label">Pending</div>
-        </div>
-        <div class="lifecycle-stage expired">
-          <div class="stage-value">${lifecycle.tasks_expired}</div>
-          <div class="stage-label">Expired</div>
-        </div>
-      </div>
-    </div>
-    <div class="lifecycle-summary">
-      <div class="summary-stat">
-        <span class="summary-value">${completionRate.toFixed(1)}%</span>
-        <span class="summary-label">Completion Rate</span>
-      </div>
-      <div class="summary-stat">
-        <span class="summary-value">${avgTimeToReward.toFixed(1)}h</span>
-        <span class="summary-label">Avg Time to Reward</span>
-      </div>
-    </div>
-  `;
+  // Task lifecycle section hidden for now (see WOMBO-715)
+  // const completionRate = lifecycle.completion_rate ?? 0;
+  // const avgTimeToReward = lifecycle.avg_time_to_reward_hours ?? 0;
 
   // Leaderboard - table-based layout with Balance + Earned
   const leaderboardRows = data.rewards.leaderboard.slice(0, 10).map((entry, i) => `
@@ -231,8 +179,12 @@ function updateTimestamps(data: NetworkData) {
     day: 'numeric',
     year: 'numeric'
   });
-  const ledgerIndex = data.metadata.ledger_index?.toLocaleString() || 'N/A';
-  document.getElementById('data-timestamp')!.textContent = `${formattedDate} • Ledger #${ledgerIndex}`;
+  const ledgerIndex = data.metadata.ledger_index;
+  const ledgerFormatted = ledgerIndex?.toLocaleString() || 'N/A';
+  const ledgerLink = ledgerIndex 
+    ? `<a href="https://pftl.postfiat.org/ledger/${ledgerIndex}" target="_blank" rel="noopener">Ledger #${ledgerFormatted}</a>`
+    : `Ledger #${ledgerFormatted}`;
+  document.getElementById('data-timestamp')!.innerHTML = `${formattedDate} • ${ledgerLink}`;
 }
 
 // Show refresh indicator
@@ -309,10 +261,6 @@ async function init() {
       <section id="submitters" class="section">
         <h2>Most Active Submitters</h2>
         <div class="loading">Loading...</div>
-      </section>
-      <section id="task-lifecycle" class="section full-width">
-        <h2>Task Lifecycle Flow</h2>
-        <div class="loading">Calculating...</div>
       </section>
     </main>
     <footer class="footer">
