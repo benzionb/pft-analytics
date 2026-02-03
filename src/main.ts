@@ -185,10 +185,7 @@ function updateTimestamps(data: NetworkData) {
   });
   const ledgerIndex = data.metadata.ledger_index;
   const ledgerFormatted = ledgerIndex?.toLocaleString() || 'N/A';
-  const ledgerLink = ledgerIndex 
-    ? `<a href="https://testnet.xrpl.org/ledgers/${ledgerIndex}" target="_blank" rel="noopener">Ledger #${ledgerFormatted}</a>`
-    : `Ledger #${ledgerFormatted}`;
-  document.getElementById('data-timestamp')!.innerHTML = `${formattedDate} • ${ledgerLink}`;
+  document.getElementById('data-timestamp')!.textContent = `${formattedDate} • Ledger #${ledgerFormatted}`;
 }
 
 // Show refresh indicator
