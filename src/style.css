@@ -201,6 +201,13 @@ body {
   color: var(--text-muted);
 }
 
+.section-note-inline {
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
 /* Loading State */
 .loading {
   color: var(--text-muted);

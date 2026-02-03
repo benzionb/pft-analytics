@@ -164,10 +164,10 @@ function renderDashboard(data: NetworkData) {
 
   const maxPft = Math.max(...continuousData.map(d => d.pft), 1);
 
-  // Helper to format date as "Jan 31"
+  // Helper to format date as "Jan 31" (UTC dates from blockchain)
   const formatDateLabel = (dateStr: string) => {
-    const date = new Date(dateStr + 'T00:00:00');
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const date = new Date(dateStr + 'T00:00:00Z'); // Parse as UTC
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
   };
 
   const dailyHtml = continuousData.map(d => {
@@ -185,7 +185,7 @@ function renderDashboard(data: NetworkData) {
   }).join('');
 
   document.getElementById('daily-activity')!.innerHTML = `
-    <h2>Daily Distribution (14 Days)</h2>
+    <h2>Daily Distribution <span class="section-note-inline">(UTC, 14 days)</span></h2>
     <div class="daily-table">
       ${dailyHtml}
     </div>
