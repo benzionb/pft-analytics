@@ -193,11 +193,11 @@ body {
 }
 
 .section h2 {
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
   padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--border);
@@ -403,10 +403,11 @@ body {
 }
 
 .total-card .label {
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  opacity: 0.85;
 }
 
 /* Metric card accent colors */

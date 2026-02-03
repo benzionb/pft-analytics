@@ -11,17 +11,23 @@ let refreshIntervalId: number | null = null;
 // Render all dashboard data to the DOM
 function renderDashboard(data: NetworkData) {
   const totals = data.network_totals;
+  const avgPftPerReward = totals.total_rewards_paid > 0
+    ? totals.total_pft_distributed / totals.total_rewards_paid
+    : 0;
   const successRate = totals.total_submissions > 0
     ? (totals.total_rewards_paid / totals.total_submissions) * 100
     : 0;
+  const avgPftPerEarner = totals.unique_earners > 0
+    ? totals.total_pft_distributed / totals.unique_earners
+    : 0;
 
-  // Network metrics (streamlined)
+  // Network metrics (all 8 metrics restored)
   document.getElementById('network-totals')!.innerHTML = `
     <h2>Network Metrics</h2>
     <div class="totals-grid">
       <div class="total-card accent-gold">
         <div class="value">${formatPFT(totals.total_pft_distributed)}</div>
-        <div class="label">Total Distributed</div>
+        <div class="label">Total PFT Paid</div>
       </div>
       <div class="total-card accent-cyan">
         <div class="value">${totals.unique_earners}</div>
@@ -29,11 +35,27 @@ function renderDashboard(data: NetworkData) {
       </div>
       <div class="total-card accent-green">
         <div class="value">${totals.total_rewards_paid}</div>
-        <div class="label">Rewards Paid</div>
+        <div class="label">Tasks Rewarded</div>
+      </div>
+      <div class="total-card">
+        <div class="value">${totals.total_submissions}</div>
+        <div class="label">Submissions</div>
+      </div>
+      <div class="total-card">
+        <div class="value">${totals.unique_submitters}</div>
+        <div class="label">Active Submitters</div>
+      </div>
+      <div class="total-card">
+        <div class="value">${formatPFT(avgPftPerReward)}</div>
+        <div class="label">Avg Reward</div>
       </div>
       <div class="total-card accent-purple">
         <div class="value">${successRate.toFixed(1)}%</div>
         <div class="label">Success Rate</div>
+      </div>
+      <div class="total-card">
+        <div class="value">${formatPFT(avgPftPerEarner)}</div>
+        <div class="label">Avg Earnings</div>
       </div>
     </div>
   `;
@@ -164,7 +186,7 @@ function updateTimestamps(data: NetworkData) {
   const ledgerIndex = data.metadata.ledger_index;
   const ledgerFormatted = ledgerIndex?.toLocaleString() || 'N/A';
   const ledgerLink = ledgerIndex 
-    ? `<a href="https://pftl.postfiat.org/ledger/${ledgerIndex}" target="_blank" rel="noopener">Ledger #${ledgerFormatted}</a>`
+    ? `<a href="https://testnet.xrpl.org/ledgers/${ledgerIndex}" target="_blank" rel="noopener">Ledger #${ledgerFormatted}</a>`
     : `Ledger #${ledgerFormatted}`;
   document.getElementById('data-timestamp')!.innerHTML = `${formattedDate} • ${ledgerLink}`;
 }
