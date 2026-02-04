@@ -492,6 +492,17 @@ body {
   border-bottom: none;
 }
 
+/* Trailing hover effect for leaderboard rows (non-medal) */
+.leaderboard-table tbody tr:not(.top-1):not(.top-2):not(.top-3) td {
+  transition: background 0.6s ease-out, color 0.6s ease-out;
+}
+
+.leaderboard-table tbody tr:not(.top-1):not(.top-2):not(.top-3):hover td {
+  background: rgba(0, 255, 0, 0.08);
+  color: var(--accent);
+  transition: background 0s, color 0s;
+}
+
 .leaderboard-table tbody tr:hover td {
   background: rgba(0, 255, 0, 0.05);
 }
@@ -778,11 +789,23 @@ body {
   padding: 0.375rem 0.5rem;
   background: var(--bg-secondary);
   border-radius: 0;
-  transition: background 0.2s ease;
+  transition: background 0.6s ease-out;
+}
+
+.daily-row .daily-date,
+.daily-row .daily-amount {
+  transition: color 0.6s ease-out;
 }
 
 .daily-row:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 255, 0, 0.06);
+  transition: background 0s;
+}
+
+.daily-row:hover .daily-date,
+.daily-row:hover .daily-amount {
+  color: var(--accent);
+  transition: color 0s;
 }
 
 .daily-row:hover .daily-bar {
@@ -862,6 +885,30 @@ body {
 .submitter-row .count {
   font-weight: 700;
   color: var(--text-primary);
+}
+
+/* Trailing hover effect - slow fade on leave */
+.submitter-row {
+  transition: background 0.6s ease-out;
+}
+
+.submitter-row .rank,
+.submitter-row .address,
+.submitter-row .count {
+  transition: color 0.6s ease-out;
+}
+
+/* Instant highlight on hover */
+.submitter-row:hover {
+  background: rgba(0, 255, 0, 0.06);
+  transition: background 0s;
+}
+
+.submitter-row:hover .rank,
+.submitter-row:hover .address,
+.submitter-row:hover .count {
+  color: var(--accent);
+  transition: color 0s;
 }
 
 /* Interactive Addresses */
