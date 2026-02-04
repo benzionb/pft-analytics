@@ -18,12 +18,25 @@ const RPC_WS_URL = 'wss://rpc.testnet.postfiat.org:6007';
 const RIPPLE_EPOCH = 946684800;
 
 // TaskNode addresses
-const REWARD_ADDRESSES = [
+// Primary reward wallets (distribute to many users)
+const PRIMARY_REWARD_ADDRESSES = [
   'rGBKxoTcavpfEso7ASRELZAMcCMqKa8oFk', // Primary reward wallet
   'rKt4peDozpRW9zdYGiTZC54DSNU3Af6pQE', // Secondary reward wallet
   'rJNwqDPKSkbqDPNoNxbW6C3KCS84ZaQc96', // Additional reward wallet
-  'rKddMw1hqMGwfgJvzjbWQHtBQT8hDcZNCP', // Memo-funded reward relay (funded by memo addr)
 ];
+// Relay wallets (funded by memo addr, distribute to 1-2 users each)
+const RELAY_REWARD_ADDRESSES = [
+  'rKddMw1hqMGwfgJvzjbWQHtBQT8hDcZNCP',
+  'rBDbRYd8H7gB6mdNTRssgNvsw8Z6c4riDb',
+  'rhczhWeG3eSohzcH5jw8m8Ynca9cgH4eZm',
+  'rs3YdBLJHFGhcPKtbMwQgkbrpo1YjyajTP',
+  'rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC',
+  'rJNBxuus1TjCq3pikYUsKUXXwyBsJqQAt9',
+  'rD9LaW5h5AeGoHsPARWNegfZs3XpeNrv9w',
+  'rPThdoLYRDNkcook9MxGP4WV7tiN5xnsTJ',
+  'rEpmxYQXvAffdiBu21ewXXZcqzmhapn2Dm',
+];
+const REWARD_ADDRESSES = [...PRIMARY_REWARD_ADDRESSES, ...RELAY_REWARD_ADDRESSES];
 const MEMO_ADDRESS = 'rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7'; // Receives task memos
 const DEBUG_WALLET = 'rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr';
 

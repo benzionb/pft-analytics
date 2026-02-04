@@ -45,13 +45,14 @@ A Vercel cron job runs every minute:
 
 ### Tracked Addresses
 
-| Address | Role |
-|---------|------|
-| `rGBKxoTcavpfEso7ASRELZAMcCMqKa8oFk` | Primary reward wallet |
-| `rKt4peDozpRW9zdYGiTZC54DSNU3Af6pQE` | Secondary reward wallet |
-| `rJNwqDPKSkbqDPNoNxbW6C3KCS84ZaQc96` | Reward wallet |
-| `rKddMw1hqMGwfgJvzjbWQHtBQT8hDcZNCP` | Reward relay |
-| `rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7` | Memo wallet (receives pf.ptr submissions) |
+**Primary reward wallets** (distribute to many users):
+- `rGBKxoTcavpfEso7ASRELZAMcCMqKa8oFk`
+- `rKt4peDozpRW9zdYGiTZC54DSNU3Af6pQE`
+- `rJNwqDPKSkbqDPNoNxbW6C3KCS84ZaQc96`
+
+**Relay wallets** (funded by memo addr, distribute to 1-2 users): 9 addresses tracked — see `api/refresh-data.ts`
+
+**Memo wallet**: `rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7` (receives pf.ptr submissions)
 
 ## Deploy Your Own
 
