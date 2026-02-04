@@ -269,8 +269,21 @@ async function fetchAllAccountTx(
   return allTxs;
 }
 
+// Treasury wallets - funded with large amounts but NOT reward distributors
+// These are holding/distribution wallets that send non-reward payments
+const TREASURY_WALLETS = [
+  'rDZN9ggR1Lmu83752m6SRfW1Uv9iJpJao2',
+  'ragLo13ZfV5VHFP1c8g9VvPLUhBjQN7uzt',
+  'rrp8KuszsPZTYgTCGf9TC495HA5rrw7VYa',
+  'rJnpKqcmXz3vqWPZtvZW2o43bggDfC8ZMr',
+];
+
+// Upper threshold - wallets funded with > 100K are likely treasury, not relay
+const RELAY_FUNDING_MAX = 100000;
+
 // Discover relay wallets dynamically by scanning memo wallet outbound payments
 // Relay wallets are addresses funded by memo wallet with >= RELAY_FUNDING_THRESHOLD PFT
+// but less than RELAY_FUNDING_MAX (to exclude treasury wallets)
 async function discoverRelayWallets(memoTxs: TxWrapper[]): Promise<string[]> {
   const fundedByMemo = new Map<string, number>();
   
@@ -288,13 +301,16 @@ async function discoverRelayWallets(memoTxs: TxWrapper[]): Promise<string[]> {
     if (PRIMARY_REWARD_ADDRESSES.includes(recipient)) continue;
     // Skip memo address itself
     if (recipient === MEMO_ADDRESS) continue;
+    // Skip known treasury wallets
+    if (TREASURY_WALLETS.includes(recipient)) continue;
     
     fundedByMemo.set(recipient, (fundedByMemo.get(recipient) || 0) + pft);
   }
   
-  // Filter to addresses funded with >= threshold (likely relay wallets)
+  // Filter to addresses funded with >= min threshold and < max threshold (relay wallets)
+  // This excludes treasury wallets funded with millions
   const relayWallets = Array.from(fundedByMemo.entries())
-    .filter(([, amount]) => amount >= RELAY_FUNDING_THRESHOLD)
+    .filter(([, amount]) => amount >= RELAY_FUNDING_THRESHOLD && amount < RELAY_FUNDING_MAX)
     .map(([addr]) => addr);
   
   return relayWallets;
