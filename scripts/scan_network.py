@@ -24,26 +24,15 @@ except ImportError:
 RPC_WS_URL = "wss://rpc.testnet.postfiat.org:6007"
 RIPPLE_EPOCH = 946684800
 
-# TaskNode addresses (must match api/refresh-data.ts)
-# Primary reward wallets
-PRIMARY_REWARD_ADDRESSES = [
+# TaskNode addresses
+# Primary reward wallets (relay wallets are discovered dynamically in production)
+REWARD_ADDRESSES = [
     "rGBKxoTcavpfEso7ASRELZAMcCMqKa8oFk",
     "rKt4peDozpRW9zdYGiTZC54DSNU3Af6pQE",
     "rJNwqDPKSkbqDPNoNxbW6C3KCS84ZaQc96",
 ]
-# Relay wallets (funded by memo addr, distribute to 1-2 users)
-RELAY_REWARD_ADDRESSES = [
-    "rKddMw1hqMGwfgJvzjbWQHtBQT8hDcZNCP",
-    "rBDbRYd8H7gB6mdNTRssgNvsw8Z6c4riDb",
-    "rhczhWeG3eSohzcH5jw8m8Ynca9cgH4eZm",
-    "rs3YdBLJHFGhcPKtbMwQgkbrpo1YjyajTP",
-    "rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC",
-    "rJNBxuus1TjCq3pikYUsKUXXwyBsJqQAt9",
-    "rD9LaW5h5AeGoHsPARWNegfZs3XpeNrv9w",
-    "rPThdoLYRDNkcook9MxGP4WV7tiN5xnsTJ",
-    "rEpmxYQXvAffdiBu21ewXXZcqzmhapn2Dm",
-]
-REWARD_ADDRESSES = PRIMARY_REWARD_ADDRESSES + RELAY_REWARD_ADDRESSES
+# Note: Production (api/refresh-data.ts) dynamically discovers relay wallets
+# by scanning memo wallet outbound payments >= 10K PFT
 MEMO_ADDRESS = "rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7"  # Receives task memos
 
 # System accounts to exclude

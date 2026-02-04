@@ -24,24 +24,14 @@ const PRIMARY_REWARD_ADDRESSES = [
   'rKt4peDozpRW9zdYGiTZC54DSNU3Af6pQE', // Secondary reward wallet
   'rJNwqDPKSkbqDPNoNxbW6C3KCS84ZaQc96', // Additional reward wallet
 ];
-// Relay wallets (funded by memo addr, distribute to 1-2 users each)
-const RELAY_REWARD_ADDRESSES = [
-  'rKddMw1hqMGwfgJvzjbWQHtBQT8hDcZNCP',
-  'rBDbRYd8H7gB6mdNTRssgNvsw8Z6c4riDb',
-  'rhczhWeG3eSohzcH5jw8m8Ynca9cgH4eZm',
-  'rs3YdBLJHFGhcPKtbMwQgkbrpo1YjyajTP',
-  'rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC',
-  'rJNBxuus1TjCq3pikYUsKUXXwyBsJqQAt9',
-  'rD9LaW5h5AeGoHsPARWNegfZs3XpeNrv9w',
-  'rPThdoLYRDNkcook9MxGP4WV7tiN5xnsTJ',
-  'rEpmxYQXvAffdiBu21ewXXZcqzmhapn2Dm',
-];
-const REWARD_ADDRESSES = [...PRIMARY_REWARD_ADDRESSES, ...RELAY_REWARD_ADDRESSES];
+
+// Minimum funding threshold to be considered a relay wallet (in PFT)
+const RELAY_FUNDING_THRESHOLD = 10000;
 const MEMO_ADDRESS = 'rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7'; // Receives task memos
 const DEBUG_WALLET = 'rDqf4nowC2PAZgn1UGHDn46mcUMREYJrsr';
 
-// System accounts to exclude
-const SYSTEM_ACCOUNTS = new Set([...REWARD_ADDRESSES, MEMO_ADDRESS, 'rrrrrrrrrrrrrrrrrrrrrhoLvTp']);
+// System accounts to exclude (built dynamically with discovered relays)
+const BASE_SYSTEM_ACCOUNTS = new Set([...PRIMARY_REWARD_ADDRESSES, MEMO_ADDRESS, 'rrrrrrrrrrrrrrrrrrrrrhoLvTp']);
 
 // Type definitions
 interface RewardEntry {
@@ -279,10 +269,42 @@ async function fetchAllAccountTx(
   return allTxs;
 }
 
+// Discover relay wallets dynamically by scanning memo wallet outbound payments
+// Relay wallets are addresses funded by memo wallet with >= RELAY_FUNDING_THRESHOLD PFT
+async function discoverRelayWallets(memoTxs: TxWrapper[]): Promise<string[]> {
+  const fundedByMemo = new Map<string, number>();
+  
+  for (const txWrapper of memoTxs) {
+    const tx = getTxData(txWrapper);
+    if (!tx) continue;
+    if (tx.TransactionType !== 'Payment') continue;
+    if (tx.Account !== MEMO_ADDRESS) continue;
+    
+    const pft = parsePftAmount(tx.DeliverMax) ?? parsePftAmount(tx.Amount);
+    if (pft === null || pft <= 0) continue;
+    
+    const recipient = tx.Destination || '';
+    // Skip known primary reward addresses
+    if (PRIMARY_REWARD_ADDRESSES.includes(recipient)) continue;
+    // Skip memo address itself
+    if (recipient === MEMO_ADDRESS) continue;
+    
+    fundedByMemo.set(recipient, (fundedByMemo.get(recipient) || 0) + pft);
+  }
+  
+  // Filter to addresses funded with >= threshold (likely relay wallets)
+  const relayWallets = Array.from(fundedByMemo.entries())
+    .filter(([, amount]) => amount >= RELAY_FUNDING_THRESHOLD)
+    .map(([addr]) => addr);
+  
+  return relayWallets;
+}
+
 // Analyze reward transactions
 async function analyzeRewardTransactions(
   client: Client,
-  txs: TxWrapper[]
+  txs: TxWrapper[],
+  rewardAddresses: string[]
 ): Promise<RewardsAnalysisInternal> {
   const participants = new Set<string>();
   const rewardsByRecipient = new Map<string, number>();
@@ -290,9 +312,12 @@ async function analyzeRewardTransactions(
   const txCountByDay = new Map<string, number>();
   let totalPft = 0;
   const rewardList: RewardEntry[] = [];
+  
+  // Build system accounts set dynamically
+  const systemAccounts = new Set([...rewardAddresses, MEMO_ADDRESS, 'rrrrrrrrrrrrrrrrrrrrrhoLvTp']);
 
   // #region agent log
-  fetch('http://127.0.0.1:7242/ingest/65fd5333-ce3c-47a5-9a12-4a91675ab968',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/refresh-data.ts:297',message:'analyzeRewardTransactions start',data:{tx_count:txs.length,reward_addresses:REWARD_ADDRESSES.length},timestamp:Date.now(),sessionId:'debug-session',runId:'pre-fix',hypothesisId:'H1'})}).catch(()=>{});
+  fetch('http://127.0.0.1:7242/ingest/65fd5333-ce3c-47a5-9a12-4a91675ab968',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/refresh-data.ts:297',message:'analyzeRewardTransactions start',data:{tx_count:txs.length,reward_addresses:rewardAddresses.length},timestamp:Date.now(),sessionId:'debug-session',runId:'pre-fix',hypothesisId:'H1'})}).catch(()=>{});
   // #endregion
   for (const txWrapper of txs) {
     const tx = getTxData(txWrapper);
@@ -300,7 +325,7 @@ async function analyzeRewardTransactions(
 
     // Only outgoing payments from reward addresses
     if (tx.TransactionType !== 'Payment') continue;
-    if (!tx.Account || !REWARD_ADDRESSES.includes(tx.Account)) continue;
+    if (!tx.Account || !rewardAddresses.includes(tx.Account)) continue;
 
     const candidateRecipient = tx.Destination || '';
     if (candidateRecipient === DEBUG_WALLET) {
@@ -315,7 +340,7 @@ async function analyzeRewardTransactions(
     if (pft === null || pft <= 0) continue;
 
     const recipient = tx.Destination || '';
-    if (SYSTEM_ACCOUNTS.has(recipient)) continue;
+    if (systemAccounts.has(recipient)) continue;
 
     // #region agent log
     if (recipient === DEBUG_WALLET) {
@@ -421,7 +446,7 @@ function analyzeMemoTransactions(txs: TxWrapper[]): SubmissionsAnalysisInternal 
     if (tx.Destination !== MEMO_ADDRESS) continue;
 
     const sender = tx.Account || '';
-    if (SYSTEM_ACCOUNTS.has(sender)) continue;
+    if (BASE_SYSTEM_ACCOUNTS.has(sender)) continue;
 
     // Check for pf.ptr memo (hex: 70662e707472)
     const memos = tx.Memos || [];
@@ -635,14 +660,18 @@ export default async function handler(request: VercelRequest, response: VercelRe
     const ledgerResponse = await client.request({ command: 'ledger_current' });
     const ledgerIndex = ledgerResponse.result.ledger_current_index;
 
-    // Fetch reward transactions from ALL reward addresses
+    // Fetch memo transactions first (needed for relay discovery)
+    const memoTxs = await fetchAllAccountTx(client, MEMO_ADDRESS, 5000);
+    
+    // Dynamically discover relay wallets funded by memo address
+    const relayWallets = await discoverRelayWallets(memoTxs);
+    const allRewardAddresses = [...PRIMARY_REWARD_ADDRESSES, ...relayWallets];
+    
+    // Fetch reward transactions from ALL reward addresses (primary + discovered relays)
     const rewardTxArrays = await Promise.all(
-      REWARD_ADDRESSES.map((addr) => fetchAllAccountTx(client!, addr, 5000))
+      allRewardAddresses.map((addr) => fetchAllAccountTx(client!, addr, 5000))
     );
     const rewardTxs = rewardTxArrays.flat();
-
-    // Fetch memo transactions
-    const memoTxs = await fetchAllAccountTx(client, MEMO_ADDRESS, 5000);
 
     if (process.env.DEBUG_WALLET_ANALYSIS === '1') {
       const debugTxs = await fetchAllAccountTx(client, DEBUG_WALLET, 5000);
@@ -669,7 +698,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
     }
 
     // Analyze
-    const rewardsInternal = await analyzeRewardTransactions(client, rewardTxs);
+    const rewardsInternal = await analyzeRewardTransactions(client, rewardTxs, allRewardAddresses);
     const submissionsInternal = analyzeMemoTransactions(memoTxs);
     const taskLifecycle = correlateTaskLifecycle(
       submissionsInternal.submission_events,
@@ -684,7 +713,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
       metadata: {
         generated_at: new Date().toISOString(),
         ledger_index: ledgerIndex,
-        reward_addresses: REWARD_ADDRESSES,
+        reward_addresses: allRewardAddresses,
         memo_address: MEMO_ADDRESS,
         reward_txs_fetched: rewardTxs.length,
         memo_txs_fetched: memoTxs.length,
